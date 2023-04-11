@@ -2,6 +2,7 @@ import React from 'react';
 import './possibility.css';
 
 import sittingDog from '../../assets/sittingdog.svg';
+import { APP_NAME } from '../../constants';
 
 const Possibility = () => {
   return (
@@ -11,7 +12,7 @@ const Possibility = () => {
             <img src={sittingDog} alt="possibility" />
           </div>
           <div className='toku__possibility-content'>
-            <h1 className='gradient__text'>Why NFP?</h1>
+            <h1 className='gradient__text'>Why {APP_NAME}?</h1>
             <p>Every year, millions of animals end up in shelters, hoping to find a home they can call their own. 
               Unfortunately, many of these animals never get the attention they deserve, and their stay in the 
               shelter may be forever and the last thing they see 💔. Our project was born out of a desire to make a 

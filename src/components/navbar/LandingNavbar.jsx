@@ -4,13 +4,14 @@ import { useNavigate } from "react-router-dom";
 
 import logo from '../../assets/logo.png';
 import './landingnavbar.css';
+import { APP_NAME } from '../../constants';
 
 
 const Menu = () => (
   <>
   <p><a href="#home">Home</a></p>
-  <p><a href="#about">What is NFP?</a></p>
-  <p><a href="#possibility">Why NFP?</a></p>
+  <p><a href="#about">What is {APP_NAME}?</a></p>
+  <p><a href="#possibility">Why {APP_NAME}?</a></p>
   </>
 )
 
@@ -28,9 +29,9 @@ const Navbar = () => {
         </div>
       </div>
       <div className="toku__navbar-sign">
-        <p><a href='/auth'>Sign in</a></p>
+        {/* <p><a href='/auth'>Sign in</a></p> */}
         <button type="button" onClick={() => {
-                  navigate("/auth");}}>Sign up</button>
+                  navigate("/auth");}}>Connect Wallet</button>
       </div>
       <div className='toku__navbar-menu'>
         {toggleMenu

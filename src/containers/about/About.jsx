@@ -1,12 +1,13 @@
 import React from 'react';
 import { Feature } from '../../components';
 import './about.css';
+import { APP_NAME } from '../../constants';
 
 const about = () => {
   return (
     <div className="toku__about section__margin" id="about">
       <div className='toku__about-heading'>
-        <h1 className='gradient__text'>What is NFP?</h1>
+        <h1 className='gradient__text'>What is {APP_NAME}?</h1>
         <p>An ANIMAL ADOPTION NFT family</p>
       </div>
       <div>

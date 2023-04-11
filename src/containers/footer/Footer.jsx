@@ -1,6 +1,7 @@
 import React from 'react';
 import './footer.css';
 import tokulogo from '../../assets/logo.png'
+import { APP_NAME } from '../../constants';
 
 const Footer = () => {
 
@@ -20,7 +21,7 @@ const Footer = () => {
           </div>
         </div>
         <div className='toku__footer-copyright'>
-          <p>2023 Non Fungible Pets. All rights reserved.</p>
+          <p>{new Date().getFullYear()} {APP_NAME}. All rights reserved.</p>
         </div>
     </div>
   )

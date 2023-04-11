@@ -5,11 +5,19 @@
 Adoptify
 ---
 
-## Inspiration
+Adoptify is a collectible Theta NFT platform for streamers to boost adoption rates of pets in shelters
 
-## What it does
+Built for the Theta devpost 2023 hackathon.
+
+## Motivation
+
+## How to run
+`yarn; yarn start`
+
+The app should now be running on port 3000.
 
 ## How we built it
+
 
 ## Challenges we ran into
 
