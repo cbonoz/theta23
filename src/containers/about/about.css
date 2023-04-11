@@ -1,0 +1,118 @@
+.toku__about {
+    display: flex;
+    flex-direction: column;
+
+    padding: 2rem;
+    background: var(--color-footer);
+
+    /* ff 3.6+ */
+    background:-moz-radial-gradient(circle at 30% -100%, rgba(179, 222, 227, 1) 25%, rgba(56,120,247, 1) 85%, rgba(179, 222, 227, 1) 100%);
+
+    /* safari 5.1+,chrome 10+ */
+    background:-webkit-radial-gradient(circle at 30% -100%, rgba(179, 222, 227, 1) 25%, rgba(56,120,247, 1) 85%, rgba(179, 222, 227, 1) 100%);
+
+    /* opera 11.10+ */
+    background:-o-radial-gradient(circle at 30% -100%, rgba(179, 222, 227, 1) 25%, rgba(56,120,247, 1) 85%, rgba(179, 222, 227, 1) 100%);
+
+    /* ie 10+ */
+    background:-ms-radial-gradient(circle at 30% -100%, rgba(179, 222, 227, 1) 25%, rgba(56,120,247, 1) 85%, rgba(179, 222, 227, 1) 100%);
+
+    /* global 92%+ browsers support */
+    background:radial-gradient(circle at 30% -100%, rgba(179, 222, 227, 1) 25%, rgba(56,120,247, 1) 85%, rgba(179, 222, 227, 1) 100%);
+
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.toku__about-feature {
+    display: flex;
+}
+
+.toku__about-feature .toku__features-container__feature {
+    margin: 0;
+}
+
+.toku__about-feature .toku__features-container__feature-text {
+    max-width: 700px;
+}
+
+.toku__about-heading {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 4rem 0 2rem;
+}
+
+.toku__about-heading h1 {
+    font-family: var(--font-family);
+    font-size: 34px;
+    line-height: 45px;
+    font-weight: 800;
+    max-width: 510px;
+}
+
+.toku__about-heading p {
+    font-family: var(--font-family);
+    font-size: 16px;
+    line-height: 30px;
+    font-weight: 500;
+    color: var(--color-subtext);
+    cursor: pointer;
+}
+
+.toku__about-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin-top: 2rem;
+}
+
+.toku__about-container .toku__features-container__feature {
+    flex: 1;
+    margin: 1rem;
+    min-width: 210px;
+    display: unset;
+    flex-direction: column;
+}
+
+/* Customizing feature component as per needs */
+.toku__about-container .toku__features-container_feature-text {
+    margin-top: 0.5rem;
+}
+
+@media screen and (max-width: 850px) {
+    .toku__about-heading {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 0rem;
+    }
+
+    .gpt3__whatgpt3-heading p {
+        margin-top: 1rem;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    /* Customizing feature component as per needs */
+    .toku__about-feature .toku__features-container__feature {
+        flex-direction: column;
+    }
+
+    /* Customizing feature component as per needs */
+    .toku__about-feature .toku__features-container_feature-text {
+        margin-top: 0.5rem;
+    }
+
+    .gpt3__whatgpt3-heading h1 {
+        font-size: 28px;
+        line-height: 40px;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    /* Customizing feature component as per needs */
+    .toku__about-container .toku__features-container__feature {
+        margin: 1rem 0;
+        min-width: 100%;
+    }
+}

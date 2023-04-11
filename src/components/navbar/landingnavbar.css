@@ -1,0 +1,137 @@
+.toku__navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 2rem 6rem;
+}
+
+.toku__navbar-links {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.toku__navbar-links_logo {
+    margin-right: 2rem;
+}
+
+.toku__navbar-links_logo img {
+    width: 259px;
+    height: 48px;
+}
+
+.toku__navbar-links_container {
+    display: flex;
+    flex-direction: row;
+}
+
+.toku__navbar-sign {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.toku__navbar-links_container p,
+.toku__navbar-sign p,
+.toku__navbar-menu_container p {
+    color: #696969;
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 25px;
+    text-transform: capitalize;
+
+    margin: 0 1rem;
+    cursor: pointer;
+}
+
+.toku__navbar-sign button,
+.toku__navbar-menu_container button {
+    padding : 0.5rem 1rem;
+    color: white;
+    left: 1153px;
+    top: 55px;
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 25px;
+    border-radius: 5px;
+    border: 0;
+    outline: none;
+    cursor: pointer;
+    background: #63b7db
+}
+
+.toku__navbar-menu {
+    margin-left: 1rem;
+    display: none;
+    position: relative;
+}
+
+.toku__navbar-menu png {
+    cursor: pointer;
+}
+
+.toku__navbar-menu_container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    flex-direction: column;
+    text-align: end;
+    background: var(--color-footer);
+    padding: 2rem;
+    position: absolute;
+    top: 40px;
+    right: 0;
+    margin-top: 1rem;
+    min-width: 210px;
+    border-radius: 5px;
+    box-shadow: 0 0 5 rgba(0,0,0,0.2);
+}
+
+.toku__navbar-menu_container p {
+    margin: 1rem 0;
+}
+
+.toku__navbar-menu_container-links-sign {
+    display: none;
+}
+
+/* tablet settings */
+@media screen and (max-width: 1050px) {
+    .toku__navbar-links_container {
+        display: none;
+    }
+
+    .toku__navbar-menu {
+        display: flex;
+    }
+}
+
+/* mobile settings */
+@media screen and (max-width: 700px) {
+    .toku__navbar {
+        padding: 2rem 4rem;
+    }
+}
+
+/* smaller mobile settings */
+@media screen and (max-width: 550px) {
+    .toku__navbar {
+        padding: 2rem;
+    }
+
+    .toku__navbar-sign {
+        display: none;
+    }
+
+    .toku__navbar-menu_container {
+        top: 20px;
+    }
+
+    .toku__navbar-menu_container-links-sign {
+        display: block;
+    }
+}

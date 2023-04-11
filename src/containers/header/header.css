@@ -1,0 +1,164 @@
+.toku__header {
+    display: flex;
+}
+
+.toku__header-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-right: 5rem;
+}
+
+.toku__header-content h1 {
+    font-family: var(--font-family);
+    font-weight: 800;
+    font-size: 62px;
+    line-height: 75px;
+    letter-spacing: -0.04rem;
+}
+
+.toku__header-content p {
+    font-family: var(--font-family);
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 27px;
+    
+    color: black;
+    margin-top: 1.5rem;
+}
+
+.toku__header-content__input {
+    width: 100%;
+    margin: 2rem 0 1rem;
+    display: flex;
+}
+
+.toku__header-content__input input {
+    flex: 2;
+    width: 100%;
+    min-height: 50px;
+    background: #b3dee3;
+    border-radius: 5px 0px 0px 5px;
+    font-family: var(--font-family);
+    font-size: 20px;
+    line-height: 27px;
+    background: var(--color-footer);
+    border: 2px solid var(--color-footer);
+    padding: 0 1rem;
+    outline: none;
+    color: rgb(0, 0, 0);
+}
+
+.toku__header-content__input button {
+    background: rgb(56,120,247);
+    border-radius: 0px 5px 5px 0px;
+    flex: 0.6;
+    width: 100%;
+    min-height: 50px;
+    font-weight: bold;
+    font-family: var(--font-family);
+    font-size: 20px;
+    line-height: 27px;
+    cursor: pointer;
+    outline: none;
+    padding: 0 1rem;
+    border: none;
+    color: white;
+}
+
+#email::placeholder {
+    color: #676767;
+    opacity: 1;
+}
+
+.toku__header-content__people {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.toku__header-content__people img {
+    width: 180px;
+    height: 38px;
+}
+
+.toku__header-content__people p {
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 38px;
+    color: white;
+    margin: 0 0 0 1rem;
+    text-align: center;
+}
+
+.toku__header-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.toku__header-image img {
+    width: 100%;
+    height: 100%;
+}
+
+@media screen and (max-width: 1050px) {
+    .toku__header {
+        flex-direction: column;
+    }
+
+    .toku__header-content {
+        margin: 0 0 3rem;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .toku__header h1 {
+        font-size: 48px;
+        line-height: 60px;
+    }
+
+    .toku__header p {
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    .toku__header-content__people {
+        flex-direction: column;
+    }
+
+    .toku__header-content__people p {
+        margin: 0;
+    }
+
+    .toku__header-content__input input,
+    .toku__header-content__input button {
+        font-size: 16px;
+        line-height: 24px;
+    }
+}
+
+@media screen and (max-width: 490px) {
+    .toku__header h1 {
+        font-size: 36px;
+        line-height: 48px;
+    }
+
+    .toku__header p {
+        font-size: 14px;
+        line-height: 24px;
+    }
+
+    .toku__header-content__input input,
+    .toku__header-content__input button {
+        font-size: 12px;
+        line-height: 16px;
+    }
+}
