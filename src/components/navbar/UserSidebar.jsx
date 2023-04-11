@@ -2,7 +2,6 @@ import * as React from 'react';
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate, useLocation } from 'react-router-dom';
-import decode from 'jwt-decode';
 
 import { styled, useTheme } from '@mui/material/styles';
 import { Avatar, Box, Button, Drawer, CssBaseline, Toolbar, List, Typography, Divider, 
@@ -38,20 +37,6 @@ const UserSidebar = ({ pageTitle, open, setOpen }) => {
     navigate('/auth');
     setUser(null);
   };
-
-  useEffect(() => {
-    const token = user?.token;
-
-    if (token) {
-        const decodedToken = decode(token);
-  
-        if (decodedToken.exp * 1000 < new Date().getTime()) logout();
-      };
-    
-    setUser(JSON.parse(localStorage.getItem('profile')));
-  }, []);
-
-
 
   const AppBar = styled(MuiAppBar, {
     shouldForwardProp: (prop) => prop !== 'open',

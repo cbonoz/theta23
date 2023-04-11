@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import logo from '../../assets/logo.png';
 import './landingnavbar.css';
 import { APP_NAME } from '../../constants';
+import ConnectButton from '../ConnectButton';
 
 
 const Menu = () => (
@@ -29,9 +30,7 @@ const Navbar = () => {
         </div>
       </div>
       <div className="toku__navbar-sign">
-        {/* <p><a href='/auth'>Sign in</a></p> */}
-        <button type="button" onClick={() => {
-                  navigate("/auth");}}>Connect Wallet</button>
+        <ConnectButton/>
       </div>
       <div className='toku__navbar-menu'>
         {toggleMenu
@@ -43,10 +42,7 @@ const Navbar = () => {
             <div className='toku__navbar-menu_container-links'>
               <Menu />
               <div className="toku__navbar-menu_container-links-sign">
-                <p><a href='/auth'>Sign in</a></p>
-                <button type="button" onClick={() => {
-                  navigate("/auth");
-                }}>Sign up</button>
+              <ConnectButton/>
               </div>
             </div>
           </div>

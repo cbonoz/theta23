@@ -1,5 +1,5 @@
 import React from 'react';
-import { Landing, Auth, Contact, Account, Transactions, Sell, Help, Tutorial, Reportbugs, Terms, Privacy, Error } from './pages';
+import { Landing, Contact, Account, Transactions, Sell, Help, Tutorial, Reportbugs, Terms, Privacy, Error } from './pages';
 import { BrowserRouter, Route, Routes, Outlet, Navigate } from 'react-router-dom';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 
@@ -30,12 +30,10 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <GoogleOAuthProvider clientId='342302868532-d7t07ohj57fbbg9765gt1avseqagasag.apps.googleusercontent.com' >
       <BrowserRouter>
         <div className='App'>
           <Routes>
             <Route exact path="/" element={<Landing />} />
-            <Route path="/auth" element={JSON.parse(localStorage.getItem('profile')) ? <Navigate to="/transactions" /> : <Auth/>} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/terms" element={<Terms/>} />
@@ -51,7 +49,6 @@ const App = () => {
           </Routes>
         </div>
       </BrowserRouter>
-    </GoogleOAuthProvider>
     </ThemeProvider>
 
   )

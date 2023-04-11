@@ -2,6 +2,7 @@ import React from 'react';
 import './header.css';
 import petting_dog from '../../assets/pettingdog.svg';
 import { useNavigate } from 'react-router-dom';
+import ConnectButton from '../../components/ConnectButton';
 
 const Header = () => {
   const navigate = useNavigate();
@@ -14,7 +15,7 @@ const Header = () => {
 
           <div className='toku__header-content__input'>
             <input id="email" type="email" placeholder="Your Email Address" autoComplete="on"></input>
-            <button type="button" onClick={()=> {navigate('/auth')}}>Get Started</button>
+            <ConnectButton/>
           </div>
 
         </div>
