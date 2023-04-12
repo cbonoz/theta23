@@ -16,6 +16,14 @@ export const APP_THEME = createTheme({
     }
 });
 
+export const EXAMPLE_FORM = 
+{
+    userName: "cbono",
+    title: "Golden retriever",
+    payableAddress: null,
+    eth: 0.01,
+  }
+
 export const ACTIVE_NETWORK = ThetaTestnet;
 
 export const DEFAULT_HOME_PAGE = '/user/transactions'
