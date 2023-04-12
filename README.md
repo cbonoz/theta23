@@ -6,15 +6,27 @@ Adoptify
 ---
 
 
-
 Adoptify is a collectible Theta NFT platform for streamers to boost adoption rates of pets in shelters
 
 Built for the Theta devpost 2023 hackathon.
+
+<!-- Live Demo: 
+
+Video: -->
+
 ### Motivation
 Our motivation for building Adoptify was to create a platform that can make a real difference in the lives of shelter animals. We wanted to use the power of NFTs and blockchain technology to raise awareness and drive adoption rates of pets in shelters. Our goal was to create a community of like-minded individuals who are passionate about animal welfare and can work together to make a positive impact.
 
 
 ## How to run
+
+Adoptify requires a metamask wallet for authenticating NFT and purchase transactions.
+
+Follow the guide here to set up metamask:
+https://docs.thetatoken.org/docs/web3-stack-metamask
+
+Once metamask is installed, run the project locally.
+
 `yarn; yarn start`
 
 The app should now be running on port 3000.

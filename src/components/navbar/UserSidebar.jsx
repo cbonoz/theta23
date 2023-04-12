@@ -15,27 +15,27 @@ import ListAltIcon from '@mui/icons-material/ListAlt';
 import Inventory2Icon from '@mui/icons-material/Inventory2';
 import AssessmentIcon from '@mui/icons-material/Assessment';
 import InfoIcon from '@mui/icons-material/Info';
+import PersonIcon from '@mui/icons-material/Person';
 import LogoutIcon from '@mui/icons-material/Logout';
 
 import logo from '../../assets/logo.png';
 
 import * as actionType from '../../constants/actionTypes';
-import { getStocksBySearch } from '../../actions/stocks';
-import { getShopsBySearch } from '../../actions/shops';
+import { useEthers } from '@usedapp/core';
+import { PersonPinCircleOutlined } from '@mui/icons-material';
+import { DEFAULT_HOME_PAGE } from '../../constants';
 
 const UserSidebar = ({ pageTitle, open, setOpen }) => {
+  const {deactivate} = useEthers()
   const drawerWidth = 248;
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
-  const userId = (user?.result?.sub || user?.result?._id);
-
-  const logout = () => {
+  const logout = async () => {
     dispatch({ type: actionType.LOGOUT });
-    navigate('/auth');
-    setUser(null);
+    deactivate()
+    setTimeout(() => navigate('/'), 100);
   };
 
   const AppBar = styled(MuiAppBar, {
@@ -91,22 +91,6 @@ const UserSidebar = ({ pageTitle, open, setOpen }) => {
             <Typography variant="h5" noWrap component="div">
                 {pageTitle}
             </Typography>
-
-            <Box sx={{ ml: "auto"}}>
-                <Avatar 
-                    onClick={() => {navigate("/account");}}
-                    alt={user.result.name}
-                    src={user.result.imageUrl}>{user.result.name.charAt(0)}
-                </Avatar>
-            </Box>
-            <Box sx={{ ml: 0.3}}>
-                <Button
-                    variant="contained"
-                    disableElevation
-                    onClick={() => {navigate("/account");}}>{user.result.name}
-                </Button>
-            </Box>
-
             </Toolbar>
         </AppBar>
         <Drawer
@@ -130,8 +114,8 @@ const UserSidebar = ({ pageTitle, open, setOpen }) => {
         >
             <DrawerHeader>
             <Box sx={{ mr: 0.5 }}>
-              <a href="/transactions">
-                <img src={logo} alt="logo" width={150} height={27} />
+              <a href={DEFAULT_HOME_PAGE}>
+                <img src={logo} alt="logo" width={180} height={45} />
               </a>
             </Box>
             <IconButton onClick={handleDrawerClose}>
@@ -140,7 +124,7 @@ const UserSidebar = ({ pageTitle, open, setOpen }) => {
             </DrawerHeader>
             <Divider />
             <List>
-                <ListItem disablePadding onClick={() => {navigate("/transactions");}}>
+                <ListItem disablePadding onClick={() => {navigate("/user/transactions");}}>
                     <ListItemButton>
                     <ListItemIcon>
                         <AssessmentIcon style={{ color: '#424242' }} />
@@ -149,12 +133,21 @@ const UserSidebar = ({ pageTitle, open, setOpen }) => {
                     </ListItemButton>
                 </ListItem>
 
-                <ListItem disablePadding onClick={() => {navigate("/sell");}}>
+                <ListItem disablePadding onClick={() => {navigate("/user/sell");}}>
                     <ListItemButton>
                     <ListItemIcon>
                         <PaidIcon style={{ color: '#424242' }} />
                     </ListItemIcon>
                     <ListItemText primary="Payment" />
+                    </ListItemButton>
+                </ListItem>
+
+                <ListItem disablePadding onClick={() => {navigate("/user/account");}}>
+                    <ListItemButton>
+                    <ListItemIcon>
+                        <PersonIcon style={{ color: '#424242' }} />
+                    </ListItemIcon>
+                    <ListItemText primary="Account" />
                     </ListItemButton>
                 </ListItem>
                 
@@ -167,7 +160,7 @@ const UserSidebar = ({ pageTitle, open, setOpen }) => {
                     <ListItemText primary="Logout" />
                     </ListItemButton>
                 </ListItem>
-                <ListItem disablePadding onClick={() => {navigate("/help");}}>
+                <ListItem disablePadding onClick={() => {navigate("/user/help");}}>
                     <ListItemButton>
                     <ListItemIcon>
                         <InfoIcon style={{ color: '#424242' }} />

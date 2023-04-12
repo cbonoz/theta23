@@ -6,11 +6,11 @@ const CTA = () => {
     <div className='toku__cta'>
       <div className='toku__cta-content'>
         <p>Join now.</p>
-        <h3>Register today to help shelter animals find their forever homes! </h3>
+        <h3>Connect your wallet to help shelter animals find their forever homes! </h3>
       </div>
-      <div className='toku__cta-button'>
+      {/* <div className='toku__cta-button'>
         <button type="button">Get Started</button>
-      </div>
+      </div> */}
     </div>
   )
 }

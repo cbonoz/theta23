@@ -23,7 +23,7 @@ const Navbar = () => {
     <div className="toku__navbar">
       <div className="toku__navbar-links">
         <div className="toku__navbar-links_logo">
-          <img src={logo} alt="logo" />
+          <img src={logo} alt="logo" className='pointer' onClick={() => navigate('')} />
         </div>
         <div className="toku__navbar-links_container">
           <Menu />

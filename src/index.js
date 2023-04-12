@@ -8,13 +8,23 @@ import reducers from './reducers';
 
 import App from './App';
 import './index.css';
+import { APP_NETWORK_CONFIG } from './constants';
+import { DAppProvider } from '@usedapp/core';
+import { BrowserRouter } from 'react-router-dom';
 
 const store = createStore(reducers, compose(applyMiddleware(thunk)));
 
 const container = document.getElementById('root');
 const root = createRoot(container);
 root.render(
-    <Provider store={store}>
-        <App />
-    </Provider>
+    <DAppProvider config={APP_NETWORK_CONFIG}>
+        <BrowserRouter>
+
+
+            <Provider store={store}>
+                <App />
+            </Provider>
+
+        </BrowserRouter>
+    </DAppProvider>
 );

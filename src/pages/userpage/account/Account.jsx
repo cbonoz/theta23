@@ -3,13 +3,15 @@ import { Box, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
 import UserSidebar from '../../../components/navbar/UserSidebar';
+import { ACTIVE_NETWORK } from '../../../constants';
+import RenderBalance from '../../../components/RenderBalance';
+import { useEtherBalance } from '@usedapp/core';
 
-const Account = () => {
+const Account = ({account}) => {
   const drawerWidth = 240;
+  const amount = useEtherBalance(account);
 
   const [open, setOpen] = React.useState(true);
-
-  const user = JSON.parse(localStorage.getItem('profile'));
 
   const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
     ({ theme, open }) => ({
@@ -45,10 +47,10 @@ const Account = () => {
         <UserSidebar open={open} setOpen={setOpen} pageTitle="Account Overview" />
         <Main open={open}>
           <DrawerHeader />
-          <Typography variant="h6" component="h6">Name: {user?.result?.name}</Typography>
-          <Typography variant="h6" component="h6">Email: {user?.result?.email}</Typography>
-          <Typography variant="h6" component="h6">Username: {user.result.userName || 'Null' }</Typography>
-          <Typography variant="h6" component="h6">Country: {user.result.country || 'Null' }</Typography>
+          <Typography variant="h6" component="h6">Network: {ACTIVE_NETWORK.chainName}</Typography>
+          {account && <Typography variant="h6" component="h6">Address: {account}</Typography>}
+          {/* Render balance */}
+          <RenderBalance account={account} amount={amount}/>
         </Main>
       </Box>
     </div>

@@ -14,8 +14,8 @@ const Header = () => {
           <p>Mint an NFT of a real animal in need and connect with influencers, artists, and creators to raise awareness and play a direct role on their journey to a forever home. </p>
 
           <div className='toku__header-content__input'>
-            <input id="email" type="email" placeholder="Your Email Address" autoComplete="on"></input>
-            <ConnectButton/>
+            {/* <input id="email" type="email" placeholder="Your Email Address" autoComplete="on"></input> */}
+            <button onClick={() => navigate('/user/transactions')}>Go to transactions</button>
           </div>
 
         </div>
