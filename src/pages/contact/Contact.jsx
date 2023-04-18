@@ -3,6 +3,7 @@ import { Typography, Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
 import ContactForm from '../../components/Form/ContactForm';
+import { DEFAULT_HOME_PAGE } from '../../constants';
 
 const Contact = () => {
   const [submitted, setSubmitted] = useState(false);
@@ -15,7 +16,7 @@ const Contact = () => {
          <ContactForm submitted={submitted} setSubmitted={setSubmitted} />: 
          <Typography>Thank you for contacting us! We'll take a look at your message shortly.</Typography>}
 
-      <Button onClick={() => {navigate("/auth");}} color="primary" variant="contained" >Go To App</Button>
+      <Button onClick={() => {navigate(DEFAULT_HOME_PAGE);}} color="primary" variant="contained" >Go To App</Button>
       <Button onClick={() => {navigate("/");}} color="primary" variant="outlined" >Go To Homepage</Button>
     </div>
   );

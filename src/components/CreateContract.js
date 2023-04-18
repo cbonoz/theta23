@@ -4,10 +4,11 @@ import React, { useState, useEffect } from "react";
 // import { storeFiles } from "../util/stor";
 import { deployContract } from "../contract/adoptContract";
 import { getListingUrl, ipfsUrl, transactionUrl } from "../util";
-import { Button, Input, Grid } from "@mui/material"
+import { Button, Input, Grid, Box, InputLabel } from "@mui/material"
 import { ethers } from 'ethers'
 import { useEthers } from "@usedapp/core";
 import { APP_NAME, EXAMPLE_FORM } from "../constants";
+import { LoadingButton } from "@mui/lab";
 
 const LAST_STEP = 3;
 
@@ -115,41 +116,89 @@ function CreateContract({ isLoggedIn, signer, provider, blockExplorer }) {
       case 1: // info
         return (
           <div className="info-section">
-            <h2 className="sell-header">What pet are you looking to adopt?</h2>
+            <h2 className="sell-header">What pet are you looking to promote?</h2>
 
-            <Input
-              addonBefore={"Stream(s)"}
-              placeholder="Enter name of listing"
-              value={info.title}
-              onChange={(e) => updateInfo({ title: e.target.value })}
-            />
+            <Box sx={{ m: 1 }}>
 
-            <Input
-              addonBefore={"DisplayName"}
-              placeholder="Enter listing user name"
-              value={info.userName}
-              onChange={(e) => updateInfo({ userName: e.target.value })}
-            />
+              <InputLabel
+                htmlFor="component-simple"
+              >Enter pet name</InputLabel>
 
-            <Input
-              addonBefore={"Price (eth)"}
-              placeholder="Name your eth price"
-              value={info.eth}
-              onChange={(e) => updateInfo({ eth: e.target.value })}
-            />
-            <Input
-              addonBefore={"Image"}
-              addonAfter={"A default will be used if blank"}
-              placeholder="Enter listing image or thumbnail url (optional)"
-              value={info.imgUrl}
-              onChange={(e) => updateInfo({ imgUrl: e.target.value })}
-            />
-            <Input
-              addonBefore={"Payment Address"}
-              disabled
-              placeholder="Payment Address: "
-              value={info.payableAddress}
-            />
+              <Input
+                addonBefore={"Animal to adopt"}
+                fullWidth
+
+                placeholder="Enter name of listing"
+                value={info.title}
+                onChange={(e) => updateInfo({ title: e.target.value })}
+              />
+            </Box>
+
+            <Box sx={{ m: 1 }}>
+
+              <InputLabel
+                htmlFor="component-simple"
+              >Enter creator name</InputLabel>
+
+              <Input
+                addonBefore={"DisplayName"}
+                fullWidth
+
+                placeholder="Enter listing user name"
+                value={info.userName}
+                onChange={(e) => updateInfo({ userName: e.target.value })}
+              />
+
+            </Box>
+
+            <Box sx={{ m: 1 }}>
+
+              <InputLabel
+                htmlFor="component-simple"
+              >Enter adoption price (Eth)</InputLabel>
+
+              <Input
+                fullWidth
+                addonBefore={"Price (eth)"}
+                placeholder="Name your eth price"
+                value={info.eth}
+                onChange={(e) => updateInfo({ eth: e.target.value })}
+              />
+            </Box>
+
+
+            <Box sx={{ m: 1 }}>
+
+              <InputLabel
+                htmlFor="component-simple"
+              >Provide url to pet</InputLabel>
+
+              <Input
+                addonBefore={"Image"}
+                fullWidth
+
+                addonAfter={"A default will be used if blank"}
+                placeholder="Enter listing image or thumbnail url (optional)"
+                value={info.imgUrl}
+                onChange={(e) => updateInfo({ imgUrl: e.target.value })}
+              />
+            </Box>
+
+
+            <Box sx={{ m: 1 }}>
+
+              <InputLabel
+                htmlFor="component-simple"
+              >Enter payable address</InputLabel>
+
+              <Input
+                addonBefore={"Payment Address"}
+                fullWidth
+                placeholder="Payment Address: "
+                value={info.payableAddress}
+              />
+
+            </Box>
             {/* <p><br/>{UPLOAD_INFO}</p> */}
           </div>
         );
@@ -220,14 +269,14 @@ function CreateContract({ isLoggedIn, signer, provider, blockExplorer }) {
           )}
           &nbsp;
           {currentStep < LAST_STEP && (
-            <Button
+            <LoadingButton
               disabled={loading || !account}
               loading={loading}
               type="primary"
               onClick={() => updateStep(1)}
             >
               {currentStep === LAST_STEP - 1 ? "Create Contract" : "Next"}
-            </Button>
+            </LoadingButton>
           )}
         </Grid>
       </Grid>

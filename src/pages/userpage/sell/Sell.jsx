@@ -50,7 +50,7 @@ const Sell = ({account}) => {
   return (
     <div>
       <Box sx={{ display: 'flex' }}>
-        <UserSidebar open={open} setOpen={setOpen} pageTitle="Sell" />
+        <UserSidebar open={open} setOpen={setOpen} pageTitle="Register pet" />
         <Main open={open}>
           <DrawerHeader />
           {/* row and sidebar */}
