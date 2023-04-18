@@ -53,10 +53,8 @@ const Sell = ({account}) => {
         <UserSidebar open={open} setOpen={setOpen} pageTitle="Sell" />
         <Main open={open}>
           <DrawerHeader />
-          <div>
-            <h1>Deploy contract</h1>
+          {/* row and sidebar */}
             <CreateContract isLoggedIn={!!account} />
-          </div>
         </Main>
       </Box>
     </div>

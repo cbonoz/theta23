@@ -4,8 +4,8 @@ import React, { useState, useEffect } from "react";
 // import { storeFiles } from "../util/stor";
 import { deployContract } from "../contract/adoptContract";
 import { getListingUrl, ipfsUrl, transactionUrl } from "../util";
-import { Button, Input } from "@mui/material"
-import {ethers} from 'ethers'
+import { Button, Input, Grid } from "@mui/material"
+import { ethers } from 'ethers'
 import { useEthers } from "@usedapp/core";
 import { APP_NAME, EXAMPLE_FORM } from "../constants";
 
@@ -21,7 +21,7 @@ function CreateContract({ isLoggedIn, signer, provider, blockExplorer }) {
   }, [isLoggedIn]);
 
   const [files, setFiles] = useState([]);
-  const [info, setInfo] = useState({...EXAMPLE_FORM});
+  const [info, setInfo] = useState({ ...EXAMPLE_FORM });
 
   const [result, setResult] = useState({});
   const [loading, setLoading] = useState(false);
@@ -48,13 +48,13 @@ function CreateContract({ isLoggedIn, signer, provider, blockExplorer }) {
         // TODO: upload pet photos to IPFS
         // res = await storeFiles(files, info);
         // setResult(res);
-        const videoUrl = ipfsUrl(res);
+        const adoptUrl = ipfsUrl(res);
 
         // TODO: after upload of files, create the contract.
 
         const contract = await deployContract(
           info.title,
-          videoUrl,
+          adoptUrl,
           info.userName,
           info.payableAddress,
           amount
@@ -93,7 +93,7 @@ function CreateContract({ isLoggedIn, signer, provider, blockExplorer }) {
         updateStep(1)
       }
       if (!info.payableAddress) {
-        updateInfo({payableAddress: account})
+        updateInfo({ payableAddress: account })
       }
     }
 
@@ -105,7 +105,7 @@ function CreateContract({ isLoggedIn, signer, provider, blockExplorer }) {
         return (
           <div>
             <h2 className="sell-header">Login</h2>
-            <br/>
+            <br />
             <p>
               In order to create a listing, you must login with your metamask or
               wallet account. Click 'Connect Wallet' in the top right to begin.
@@ -164,10 +164,10 @@ function CreateContract({ isLoggedIn, signer, provider, blockExplorer }) {
           <div className="complete-section">
             <h2 className="sell-header green">Complete!</h2>
             {result.transactionHash && <p>
-              View transaction<br/>
+              View transaction<br />
               <a target="_blank" href={transactionUrl(result.transactionHash)}>{result.transactionHash}</a></p>}
 
-              <p>Share the contract purchase address below!</p>
+            <p>Share the contract purchase address below!</p>
             {Object.keys(result).map((k) => {
               return (
                 <li>
@@ -175,7 +175,7 @@ function CreateContract({ isLoggedIn, signer, provider, blockExplorer }) {
                 </li>
               );
             })}
-            <br/>
+            <br />
             <h3>Listing information</h3>
             {Object.keys(info).map((k) => {
               return (
@@ -198,39 +198,39 @@ function CreateContract({ isLoggedIn, signer, provider, blockExplorer }) {
   return (
     <div className="content">
       <h1 className="sell-heading">Publish a new {APP_NAME} contract</h1>
-      {/* <Header>
-        <Steps current={currentStep}>
+      <Grid container spacing={2}>
+        <Grid item xs={6} md={8}>
+          {/* <Steps current={currentStep}>
           <Step title="Login" description="Authenticate." />
           <Step title="Information" description="What are you listing?" />
           <Step title="Upload" description="Upload video(s) for purchase." />
           <Step title="Done" description="Share your contract." />
-        </Steps>
-      </Header> */}
-      {/* <Content> */}
-        <div className="sell-area">{getBody()}</div>
-      {/* </Content> */}
-      <div>
-        {(currentStep !== 0 || (currentStep !== 1 && !isLoggedIn)) && (
-          <Button
-            disabled={loading}
-            type="primary"
-            onClick={() => updateStep(-1)}
-          >
-            Previous
-          </Button>
-        )}
-        &nbsp;
-        {currentStep < LAST_STEP && (
-          <Button
-            disabled={loading || !account}
-            loading={loading}
-            type="primary"
-            onClick={() => updateStep(1)}
-          >
-            {currentStep === LAST_STEP - 1 ? "Done" : "Next"}
-          </Button>
-        )}
-        </div>
+        </Steps> */}
+          {/* <Content> */}
+          <div className="sell-area">{getBody()}</div>
+          {/* </Content> */}
+          {(currentStep !== 0 || (currentStep !== 1 && !isLoggedIn)) && (
+            <Button
+              disabled={loading}
+              type="primary"
+              onClick={() => updateStep(-1)}
+            >
+              Previous
+            </Button>
+          )}
+          &nbsp;
+          {currentStep < LAST_STEP && (
+            <Button
+              disabled={loading || !account}
+              loading={loading}
+              type="primary"
+              onClick={() => updateStep(1)}
+            >
+              {currentStep === LAST_STEP - 1 ? "Create Contract" : "Next"}
+            </Button>
+          )}
+        </Grid>
+      </Grid>
     </div>
   );
 }

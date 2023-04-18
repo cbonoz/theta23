@@ -4,7 +4,7 @@ pragma solidity ^0.8.18;
 import "hardhat/console.sol";
 
 contract AdoptContract {
-    // A AdoptContract represents a digital NFT purchase of a Adoptify pet.
+    // An AdoptContract represents a digital NFT purchase of a Adoptify pet.
     
     string private name; // Name of the theta adopt contract / item.
     string private adoptUrl; // Link to the NFT assets on IFPS.
