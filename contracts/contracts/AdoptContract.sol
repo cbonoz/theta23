@@ -5,9 +5,9 @@ import "hardhat/console.sol";
 
 contract AdoptContract {
     // An AdoptContract represents a digital NFT purchase of a Adoptify pet.
-    
+
     string private name; // Name of the theta adopt contract / item.
-    string private adoptUrl; // Link to the NFT assets on IFPS.
+    string private adoptUrl; // Image to the NFT assets on IFPS or public internet.
     string private creatorName; // Theta creator for the adopt contract.
     address private payableAddress; // Address to credit on purchase.
 
@@ -24,11 +24,13 @@ contract AdoptContract {
         price = _price;
     }
 
-    function purchase() public payable {
-        require(owner == address(0) , "Adopt already purchased");
-        require(msg.value == price, "Incorrect amount");
+    function purchaseContract() public payable {
+        // Ensure contract is not already purchased.
+        require(owner == address(0), "Adopt contract already purchased");
+        // Ensure correct amount is sent.
+        require(msg.value == price, "Incorrect amount to purchase contract");
 
-        // Set ownership of contract.
+        // Set ownership of contract to the sender.
         payable(payableAddress).transfer(msg.value);
         owner = msg.sender;
     }
