@@ -9,6 +9,7 @@ import { ethers } from 'ethers'
 import { useEthers } from "@usedapp/core";
 import { APP_NAME, EXAMPLE_FORM } from "../constants";
 import { LoadingButton } from "@mui/lab";
+import Listify from "./Listify";
 
 const LAST_STEP = 3;
 
@@ -22,10 +23,15 @@ function CreateContract({ isLoggedIn, signer, provider, blockExplorer }) {
   }, [isLoggedIn]);
 
   const [files, setFiles] = useState([]);
-  const [info, setInfo] = useState({ ...EXAMPLE_FORM });
+  const [info, setInfo] = useState({});
 
   const [result, setResult] = useState({});
   const [loading, setLoading] = useState(false);
+
+  const setDemoData = (e) => {
+    e.preventDefault();
+    setInfo({ ...EXAMPLE_FORM });
+  };
 
   const clearInfo = () => setInfo({});
 
@@ -49,13 +55,13 @@ function CreateContract({ isLoggedIn, signer, provider, blockExplorer }) {
         // TODO: upload pet photos to IPFS
         // res = await storeFiles(files, info);
         // setResult(res);
-        const adoptUrl = ipfsUrl(res);
+        // const adoptUrl = ipfsUrl(res);
 
         // TODO: after upload of files, create the contract.
 
         const contract = await deployContract(
           info.title,
-          adoptUrl,
+          info.imgUrl,
           info.userName,
           info.payableAddress,
           amount
@@ -118,11 +124,15 @@ function CreateContract({ isLoggedIn, signer, provider, blockExplorer }) {
           <div className="info-section">
             <h2 className="sell-header">What pet are you looking to promote?</h2>
 
+            <a href="#" onClick={setDemoData} className="normal-link">
+              Set demo data
+            </a>
+
             <Box sx={{ m: 1 }}>
 
               <InputLabel
                 htmlFor="component-simple"
-              >Enter pet name</InputLabel>
+              >Enter pet name / information</InputLabel>
 
               <Input
                 addonBefore={"Animal to adopt"}
@@ -138,7 +148,7 @@ function CreateContract({ isLoggedIn, signer, provider, blockExplorer }) {
 
               <InputLabel
                 htmlFor="component-simple"
-              >Enter creator name</InputLabel>
+              >Enter creator name (owner of the NFT/contract)</InputLabel>
 
               <Input
                 addonBefore={"DisplayName"}
@@ -171,7 +181,7 @@ function CreateContract({ isLoggedIn, signer, provider, blockExplorer }) {
 
               <InputLabel
                 htmlFor="component-simple"
-              >Provide url to pet</InputLabel>
+              >Provide image url for pet</InputLabel>
 
               <Input
                 addonBefore={"Image"}
@@ -205,6 +215,8 @@ function CreateContract({ isLoggedIn, signer, provider, blockExplorer }) {
       case 2: // upload
         return (
           <div>
+            <Listify
+              object={info}/>
             {/* <StreamDropzone files={files} setFiles={setFiles} /> */}
           </div>
         );

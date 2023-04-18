@@ -21,6 +21,7 @@ export const EXAMPLE_FORM =
     userName: "cbono",
     title: "Golden retriever",
     payableAddress: null,
+    imgUrl: 'https://www.thesprucepets.com/thmb/baW88YsVO_JqNBNJPhCFBHbNUMM=/1500x0/filters:no_upscale():strip_icc()/dog-breed-profile-golden-retriever-1117969-hero-da398f6462704058ace0ef5ae007866d.jpeg',
     eth: 0.01,
   }
 

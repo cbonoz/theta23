@@ -38,3 +38,12 @@ export const accountUrl = (account) =>
   `${ACTIVE_NETWORK.url}/account/${account}`;
 
   
+
+// Camel case to title case with spaces
+export const titleCase = (str) => {
+  return str
+    .replace(/([A-Z])/g, " $1")
+    .replace(/^./, function (str) {
+      return str.toUpperCase();
+    });
+} 

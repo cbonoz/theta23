@@ -7,3 +7,12 @@
 .centered {
     text-align: center;
 }
+
+.normal-link {
+    text-decoration: none;
+    color: blue;
+}
+
+.normal-link:hover {
+    text-decoration: underline;
+}
