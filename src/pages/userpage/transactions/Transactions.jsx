@@ -16,7 +16,7 @@ const Transactions = ({ account }) => {
     setLoading(true)
     setError(null);
     try {
-      const res = await getTransactionsForAccountAddress(account);
+      const res = await getTransactionsForAccountAddress(account || '0x1c155c0eb7f2fb63ce149e7586d8595773b3a35a');
       console.log('data', res.data)
       setData(res.data);
     } catch (error) {
