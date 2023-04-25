@@ -16,12 +16,16 @@ const Transactions = ({ account }) => {
     setLoading(true)
     setError(null);
     try {
-      const res = getTransactionsForAccountAddress(account);
+      const res = await getTransactionsForAccountAddress(account);
       console.log('data', res.data)
       setData(res.data);
     } catch (error) {
       const errorText = getRpcError(error)
-      setError(errorText);
+      if (errorText.indexOf('404') !== -1) {
+        setError('No transactions found for this account');
+      } else {
+        setError(errorText);
+      }
       console.error('error getting transactions', error);
     } finally {
       setLoading(false);
@@ -77,7 +81,7 @@ const Transactions = ({ account }) => {
           {!loading && <div>
             <h3>Transactions for {account}</h3>
             {data && JSON.stringify(data)}
-            {error && <p>{error}</p>}
+            {error && <p className='error-text'>{error}</p>}
           </div>}
         </Main>
       </Box>
