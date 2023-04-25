@@ -1,13 +1,9 @@
-import { ArrowLeftOutlined, InfoCircleOutlined } from '@ant-design/icons';
-import { Button, Card, Modal } from 'antd';
-import { ethers } from 'ethers';
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom';
 import { getMetadata, purchaseContract } from '../contract/adoptContract';
+import { Button, Card } from '@mui/material';
+import { APP_NAME } from '../constants';
 import { getRpcError } from '../util';
-import { APP_NAME } from '../util/constants';
-import { sendPush } from '../util/notifications';
-import { About } from './About';
 
 // This page should page a contractAddress path parameter enable a web3 transaction to credit a user with a link referral, 
 // and then redirect to url stored in state
@@ -37,7 +33,8 @@ export default function Purchase({ activeChain, account, provider }) {
             setSuccess(true)
         } catch (e) {
             console.log(e)
-            setError('Error completing referral: ' + getRpcError(e));
+            const err = getRpcError(e)
+            setError('Error completing purchase: ' + err)
         }
         finally {
             setLoading(false)
@@ -111,11 +108,9 @@ export default function Purchase({ activeChain, account, provider }) {
         setShowAbout(true)
     }
 
-    const cardTitle = <span>Credit your referral&nbsp;<InfoCircleOutlined onClick={openAbout} /></span>
-
     return (
         <div>
-            <Card title={cardTitle}>
+            <Card title={'Purchase NFT'}>
                 {title && <p>Title: {title}</p>}
                 {walletError && <p>This is a {APP_NAME} referral page.</p>}
                 {!error && <p>You will be redirected to the following page when you click the button below:</p>}
@@ -132,7 +127,7 @@ export default function Purchase({ activeChain, account, provider }) {
                 </Button>}
             </Card>
 
-            <Modal
+            {/* <Modal
                 title="About"
                 open={showAbout}
                 onOk={() => setShowAbout(false)}
@@ -154,7 +149,7 @@ export default function Purchase({ activeChain, account, provider }) {
                 <br />
                 <br />
                 <p>Thanks for using {APP_NAME}!</p>
-            </Modal>
+            </Modal> */}
         </div>
     )
 }

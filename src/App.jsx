@@ -8,6 +8,7 @@ import { ThemeProvider } from '@mui/material/styles'
 import { DAppProvider, useEthers } from '@usedapp/core';
 import { APP_NETWORK_CONFIG, APP_THEME, DEFAULT_HOME_PAGE } from './constants';
 import './App.css';
+import Purchase from './components/Purchase';
 
 const App = () => {
   const { activateBrowserWallet, account, error } = useEthers();
@@ -41,7 +42,8 @@ const App = () => {
           <Route path="/terms" element={<Terms />} />
           <Route path="user" element={<Outlet />}>
             <Route path="account" element={<Account account={account} />} />
-            <Route path="transactions" element={<Transactions />} />
+            <Route path="transactions" element={<Transactions account={account} />} />
+            <Route path="purchase" element={<Purchase account={account} />} />
             <Route path="sell" element={<Sell account={account} />} />
             <Route path="help" element={<Help />} />
             <Route path="tutorial" element={<Tutorial />} />

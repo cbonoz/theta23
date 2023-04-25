@@ -31,6 +31,18 @@ export function bytesToSize(bytes) {
   return Math.round(bytes / Math.pow(1024, i), 2) + " " + sizes[i];
 }
 
+export const getRpcError = (error) => {
+  if (error?.data?.message) {
+    return error.data.message;
+  } else if (error?.reason) { 
+    return error.reason;
+  } else if (error?.message) {
+    return error.message;
+  }
+  return JSON.stringify(error);
+};
+
+
 export const ipfsUrl = (cid) => `https://ipfs.io/ipfs/${cid}`;
 
 export const transactionUrl = (tx) => `${ACTIVE_NETWORK.blockExplorerUrl}/tx/${tx}`;

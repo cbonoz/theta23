@@ -38,12 +38,12 @@ contract AdoptNFT is ERC721 {
         // Ensure correct amount is sent.
         require(msg.value == price, "Incorrect amount to purchase NFT");
 
+        // Send payment to payableAddress.
+        payable(payableAddress).transfer(msg.value);
+
         // Set ownership of NFT to the sender.
         _safeMint(msg.sender, 1);
         owner = msg.sender;
-
-        // Send payment to payableAddress.
-        payable(payableAddress).transfer(msg.value);
 
         emit AdoptNFTPurchased(creatorName, petName, owner, price);
     }

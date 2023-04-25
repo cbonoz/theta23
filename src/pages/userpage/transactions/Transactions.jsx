@@ -1,16 +1,41 @@
-import React from 'react';
-import { Box, Typography } from '@mui/material';
+import React, { useState, useEffect } from 'react';
+import { Box, CircularProgress, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
 import UserSidebar from '../../../components/navbar/UserSidebar';
-import UserPanel from '../../../assets/userpanel.svg';
+import { getTransactionsForAccountAddress } from '../../../util/api';
+import { getRpcError } from '../../../util';
 
-const Transactions = () => {
+const Transactions = ({ account }) => {
   const drawerWidth = 240;
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-  const [open, setOpen] = React.useState(true);
+  async function fetchTransactionForAccount() {
+    setLoading(true)
+    setError(null);
+    try {
+      const res = getTransactionsForAccountAddress(account);
+      console.log('data', res.data)
+      setData(res.data);
+    } catch (error) {
+      const errorText = getRpcError(error)
+      setError(errorText);
+      console.error('error getting transactions', error);
+    } finally {
+      setLoading(false);
+    }
+  }
 
-  const user = JSON.parse(localStorage.getItem('profile'));
+
+  useEffect(() => {
+    if (account) {
+      fetchTransactionForAccount();
+    }
+  }, [account])
+
+  const [open, setOpen] = useState(true);
 
   const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
     ({ theme, open }) => ({
@@ -40,14 +65,20 @@ const Transactions = () => {
     justifyContent: 'flex-end',
   }));
 
-  
+
   return (
     <div>
       <Box sx={{ display: 'flex' }}>
         <UserSidebar open={open} setOpen={setOpen} pageTitle="Dashboard" />
         <Main open={open}>
           <DrawerHeader />
-          <img src={UserPanel} alt="userpanel" width={1160} height={631} />
+          {/* <img src={UserPanel} alt="userpanel" width={1160} height={631} /> */}
+          {loading && <CircularProgress />}
+          {!loading && <div>
+            <h3>Transactions for {account}</h3>
+            {data && JSON.stringify(data)}
+            {error && <p>{error}</p>}
+          </div>}
         </Main>
       </Box>
     </div>
