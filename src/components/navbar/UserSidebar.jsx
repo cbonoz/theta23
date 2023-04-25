@@ -152,14 +152,6 @@ const UserSidebar = ({ pageTitle, open, setOpen }) => {
                 </ListItem>
                 
                 <Divider />
-                <ListItem disablePadding onClick={logout}>
-                    <ListItemButton>
-                    <ListItemIcon>
-                        <LogoutIcon style={{ color: '#424242' }} />
-                    </ListItemIcon>
-                    <ListItemText primary="Logout" />
-                    </ListItemButton>
-                </ListItem>
                 <ListItem disablePadding onClick={() => {navigate("/user/help");}}>
                     <ListItemButton>
                     <ListItemIcon>
@@ -168,6 +160,15 @@ const UserSidebar = ({ pageTitle, open, setOpen }) => {
                     <ListItemText primary="Support" />
                     </ListItemButton>
                 </ListItem>
+                <ListItem disablePadding onClick={logout}>
+                    <ListItemButton>
+                    <ListItemIcon>
+                        <LogoutIcon style={{ color: '#424242' }} />
+                    </ListItemIcon>
+                    <ListItemText primary="Logout" />
+                    </ListItemButton>
+                </ListItem>
+             
             </List>
         </Drawer>
     </div>

@@ -50,7 +50,7 @@ const Account = ({account}) => {
           <Typography variant="h6" component="h6">Network: {ACTIVE_NETWORK.chainName}</Typography>
           {account && <Typography variant="h6" component="h6">Address: {account}</Typography>}
           {/* Render balance */}
-          <RenderBalance account={account} amount={amount}/>
+          <RenderBalance account={account} amount={amount} loading={!amount}/>
         </Main>
       </Box>
     </div>

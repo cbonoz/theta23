@@ -148,7 +148,7 @@ function CreateContract({ isLoggedIn, signer, provider, blockExplorer }) {
 
               <InputLabel
                 htmlFor="component-simple"
-              >Enter creator name (owner of the NFT/contract)</InputLabel>
+              >Enter creator/promoter name</InputLabel>
 
               <Input
                 addonBefore={"DisplayName"}

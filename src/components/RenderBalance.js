@@ -1,9 +1,13 @@
-import { useEtherBalance, useEthers } from '@usedapp/core';
+import { CircularProgress } from '@mui/material';
 import { ethers } from 'ethers';
 import React from 'react'
 
-export default function RenderBalance({ account, amount }) {
-    if (!account || !amount) {return null;}
+export default function RenderBalance({ account, amount, loading }) {
+    if (loading) {
+        return <CircularProgress />
+    }
+
+    if (!account || !amount) { return null; }
     const etherBalance = ethers.utils.formatEther(amount.toString());
 
     return (

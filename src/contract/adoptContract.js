@@ -64,6 +64,21 @@ export const getContractBundleUrl = async (contractAddress) => {
   return result;
 };
 
+export const getMetadata = async (contractAddress) => {
+  if (!contractAddress) {
+    return {};
+  }
+  const signer = await getSigner();
+  const adoptContract = new ethers.Contract(
+    contractAddress,
+    ADOPT_CONTRACT.abi,
+    signer
+  );
+  const result = await adoptContract.getMetadata();
+  return result;
+};
+
+
 
 export const purchaseContract = async (contractAddress, eth) => {
   if (!contractAddress) {
@@ -76,6 +91,6 @@ export const purchaseContract = async (contractAddress, eth) => {
     signer
   );
   const options = {value: ethers.utils.parseEther(eth + "")}
-  const result = await contract.purchase(options);
+  const result = await contract.purchaseNFT(options);
   return result;
 };

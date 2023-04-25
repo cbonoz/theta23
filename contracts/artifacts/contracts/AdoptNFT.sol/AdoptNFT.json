@@ -1,4 +1,4 @@
-export const ADOPT_CONTRACT = {
+{
   "_format": "hh-sol-artifact-1",
   "contractName": "AdoptNFT",
   "sourceName": "contracts/AdoptNFT.sol",
