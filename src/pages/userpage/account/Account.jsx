@@ -1,7 +1,8 @@
 import React from 'react';
-import { Box, Typography } from '@mui/material';
+import { Box, Typography, Button } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
+import SwitchAccounts from '../../../components/SwitchAccounts';
 import UserSidebar from '../../../components/navbar/UserSidebar';
 import { ACTIVE_NETWORK } from '../../../constants';
 import RenderBalance from '../../../components/RenderBalance';
@@ -51,6 +52,7 @@ const Account = ({account}) => {
           {account && <Typography variant="h6" component="h6">Address: {account}</Typography>}
           {/* Render balance */}
           <RenderBalance account={account} amount={amount} loading={!amount}/>
+          <SwitchAccounts />
         </Main>
       </Box>
     </div>
