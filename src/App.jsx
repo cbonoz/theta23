@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Landing, Contact, Account, Transactions, Sell, Help, Tutorial, Reportbugs, Terms, Privacy, Error } from './pages';
-import { BrowserRouter, Route, Routes, Outlet, Navigate, useNavigate } from 'react-router-dom';
+import { Route, Routes, Outlet, Navigate, useNavigate } from 'react-router-dom';
 
 import CssBaseline from '@mui/material/CssBaseline'
 import { ThemeProvider } from '@mui/material/styles'
 
-import { DAppProvider, useEthers } from '@usedapp/core';
-import { APP_NETWORK_CONFIG, APP_THEME, DEFAULT_HOME_PAGE } from './constants';
+import { useEthers } from '@usedapp/core';
+import {  APP_THEME, DEFAULT_HOME_PAGE } from './constants';
 import './App.css';
-import Purchase from './components/Purchase';
 
 const App = () => {
   const { activateBrowserWallet, account, error } = useEthers();
@@ -43,7 +42,6 @@ const App = () => {
           <Route path="user" element={<Outlet />}>
             <Route path="account" element={<Account account={account} />} />
             <Route path="transactions" element={<Transactions account={account} />} />
-            <Route path="purchase" element={<Purchase account={account} />} />
             <Route path="sell" element={<Sell account={account} />} />
             <Route path="help" element={<Help />} />
             <Route path="tutorial" element={<Tutorial />} />
