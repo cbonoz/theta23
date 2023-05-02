@@ -140,41 +140,9 @@ function CreateContract({ isLoggedIn, signer, provider, blockExplorer }) {
                 addonBefore={"Animal to adopt"}
                 fullWidth
 
-                placeholder="Enter name of listing"
-                value={info.title}
-                onChange={(e) => updateInfo({ title: e.target.value })}
-              />
-            </Box>
-
-            <Box sx={{ m: 1 }}>
-
-              <InputLabel
-                htmlFor="component-simple"
-              >Enter creator/promoter name</InputLabel>
-
-              <Input
-                addonBefore={"DisplayName"}
-                fullWidth
-
                 placeholder="Enter pet name"
                 value={info.petName}
                 onChange={(e) => updateInfo({ petName: e.target.value })}
-              />
-
-            </Box>
-
-            <Box sx={{ m: 1 }}>
-
-              <InputLabel
-                htmlFor="component-simple"
-              >Enter adoption price (Eth)</InputLabel>
-
-              <Input
-                fullWidth
-                addonBefore={"Price (eth)"}
-                placeholder="Name your eth price"
-                value={info.eth}
-                onChange={(e) => updateInfo({ eth: e.target.value })}
               />
             </Box>
 
@@ -195,6 +163,40 @@ function CreateContract({ isLoggedIn, signer, provider, blockExplorer }) {
                 onChange={(e) => updateInfo({ petUrl: e.target.value })}
               />
             </Box>
+
+            <Box sx={{ m: 1 }}>
+
+              <InputLabel
+                htmlFor="component-simple"
+              >Enter creator/promoter name</InputLabel>
+
+              <Input
+                addonBefore={"DisplayName"}
+                fullWidth
+                disabled
+                placeholder="Enter creator name"
+                value={info.creatorName}
+                onChange={(e) => updateInfo({ creatorName: e.target.value })}
+              />
+
+            </Box>
+
+            <Box sx={{ m: 1 }}>
+
+              <InputLabel
+                htmlFor="component-simple"
+              >Enter adoption price (Eth)</InputLabel>
+
+              <Input
+                fullWidth
+                addonBefore={"Price (eth)"}
+                placeholder="Name your eth price"
+                value={info.eth}
+                disabled
+                onChange={(e) => updateInfo({ eth: e.target.value })}
+              />
+            </Box>
+
 
 
             <Box sx={{ m: 1 }}>
