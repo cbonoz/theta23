@@ -173,7 +173,6 @@ function CreateContract({ isLoggedIn, signer, provider, blockExplorer }) {
               <Input
                 addonBefore={"DisplayName"}
                 fullWidth
-                disabled
                 placeholder="Enter creator name"
                 value={info.creatorName}
                 onChange={(e) => updateInfo({ creatorName: e.target.value })}
@@ -192,7 +191,6 @@ function CreateContract({ isLoggedIn, signer, provider, blockExplorer }) {
                 addonBefore={"Price (eth)"}
                 placeholder="Name your eth price"
                 value={info.eth}
-                disabled
                 onChange={(e) => updateInfo({ eth: e.target.value })}
               />
             </Box>
@@ -208,12 +206,26 @@ function CreateContract({ isLoggedIn, signer, provider, blockExplorer }) {
               <Input
                 addonBefore={"Payment Address"}
                 fullWidth
-                disabled
                 placeholder="Payment Address: "
                 value={info.creatorAddress}
               />
 
             </Box>
+
+            <Box sx={{ m: 1 }}>
+
+<InputLabel
+  htmlFor="component-simple"
+>Shelter address</InputLabel>
+
+<Input
+  addonBefore={"Shelter Address"}
+  fullWidth
+  placeholder="Shelter Address: "
+  value={info.shelterAddress}
+/>
+
+</Box>
             {/* <p><br/>{UPLOAD_INFO}</p> */}
           </div>
         );
