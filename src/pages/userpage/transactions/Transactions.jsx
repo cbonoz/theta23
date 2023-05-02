@@ -4,7 +4,7 @@ import { styled } from '@mui/material/styles';
 
 import UserSidebar from '../../../components/navbar/UserSidebar';
 import { getTransactionsForAccountAddress } from '../../../util/api';
-import { getRpcError } from '../../../util';
+import { getRpcError, titleCase } from '../../../util';
 
 const Transactions = ({ account }) => {
   const drawerWidth = 240;
@@ -80,7 +80,11 @@ const Transactions = ({ account }) => {
           {loading && <CircularProgress />}
           {!loading && <div>
             <h3>Transactions for {account}</h3>
-            {data && JSON.stringify(data)}
+            <ul>
+              {Object.keys(data || {}).map((key, index) => (
+                <li key={index}>{titleCase(key)}: {data[key]}</li>
+              ))}
+            </ul>
             {error && <p className='error-text'>{error}</p>}
           </div>}
         </Main>
