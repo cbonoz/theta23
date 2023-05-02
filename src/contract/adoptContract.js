@@ -18,7 +18,7 @@ export const getPrimaryAccount = async () => {
 };
 
 // https://dapp-world.com/smartbook/how-to-use-ethers-with-polygon-k5Hn
-export async function deployContract(name, adoptUrl, creatorName, payableAddress, price) {
+export async function deployContract(petName, petUrl, creatorName, creatorAddr, shelterAddr, priceEth) {
   const signer = await getSigner();
 
   //   https://dev.to/yosi/deploy-a-smart-contract-with-ethersjs-28no
@@ -30,12 +30,14 @@ export async function deployContract(name, adoptUrl, creatorName, payableAddress
     signer
   );
 
-  const validatedAddress = ethers.utils.getAddress(payableAddress);
-  console.log('deploying', name, adoptUrl, creatorName, validatedAddress, price)
+  const creatorAddress = ethers.utils.getAddress(creatorAddr);
+  const shelterAddress = ethers.utils.getAddress(shelterAddr);
+  console.log('deploying', petName, petUrl, creatorName, creatorAddress, shelterAddress, priceEth)
 
   // Start deployment, returning a promise that resolves to a contract object
   let contract;
-  contract = await factory.deploy(name, adoptUrl, creatorName, validatedAddress, price);
+  const options = {value: ethers.utils.parseEther(priceEth + "")}
+  contract = await factory.deploy(petName, petUrl, creatorName, creatorAddress, shelterAddress, priceEth, options);
   await contract.deployed();
   console.log("Contract deployed to address:", contract.address);
   return contract;
@@ -80,7 +82,7 @@ export const getMetadata = async (contractAddress) => {
 
 
 
-export const purchaseContract = async (contractAddress, eth) => {
+export const markAdopted = async (contractAddress, eth) => {
   if (!contractAddress) {
     return null
   }

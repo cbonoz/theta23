@@ -59,11 +59,13 @@ function CreateContract({ isLoggedIn, signer, provider, blockExplorer }) {
 
         // TODO: after upload of files, create the contract.
 
+        // TODO: BRIAN UPDATE with correct parameters for NFT mint.
         const contract = await deployContract(
-          info.title,
-          info.imgUrl,
-          info.userName,
-          info.payableAddress,
+          info.petName,
+          info.petUrl,
+          info.creatorName,
+          info.creatorAddress,
+          info.shelterAddress,
           amount
         );
 
@@ -154,9 +156,9 @@ function CreateContract({ isLoggedIn, signer, provider, blockExplorer }) {
                 addonBefore={"DisplayName"}
                 fullWidth
 
-                placeholder="Enter listing user name"
-                value={info.userName}
-                onChange={(e) => updateInfo({ userName: e.target.value })}
+                placeholder="Enter pet name"
+                value={info.petName}
+                onChange={(e) => updateInfo({ petName: e.target.value })}
               />
 
             </Box>
@@ -189,8 +191,8 @@ function CreateContract({ isLoggedIn, signer, provider, blockExplorer }) {
 
                 addonAfter={"A default will be used if blank"}
                 placeholder="Enter listing image or thumbnail url (optional)"
-                value={info.imgUrl}
-                onChange={(e) => updateInfo({ imgUrl: e.target.value })}
+                value={info.petUrl}
+                onChange={(e) => updateInfo({ petUrl: e.target.value })}
               />
             </Box>
 
@@ -199,13 +201,14 @@ function CreateContract({ isLoggedIn, signer, provider, blockExplorer }) {
 
               <InputLabel
                 htmlFor="component-simple"
-              >Enter payable address</InputLabel>
+              >Creator address</InputLabel>
 
               <Input
                 addonBefore={"Payment Address"}
                 fullWidth
+                disabled
                 placeholder="Payment Address: "
-                value={info.payableAddress}
+                value={info.creatorAddress}
               />
 
             </Box>
