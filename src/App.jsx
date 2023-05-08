@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Landing, Contact, Account, Transactions, Sell, Help, Tutorial, Reportbugs, Terms, Privacy, Error, DonorAccount, Marketplace } from './pages';
+import { Landing, Contact, Account, Transactions, Sell, Help, Tutorial, Reportbugs, Terms, Privacy, Error, DonorAccount, Marketplace, AdoptedPets } from './pages';
 import { Route, Routes, Outlet, Navigate, useNavigate } from 'react-router-dom';
 
 import CssBaseline from '@mui/material/CssBaseline'
@@ -50,6 +50,7 @@ const App = () => {
           <Route path="donor" element={<Outlet />}>
             <Route path="account" element={<DonorAccount account={account} />} />
             <Route path="marketplace" element={<Marketplace />} />
+            <Route path="adoptedpets" element={<AdoptedPets />} />
           </Route>
           <Route path="*" element={<Error />} />
         </Routes>

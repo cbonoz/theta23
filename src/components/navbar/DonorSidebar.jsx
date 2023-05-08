@@ -14,7 +14,7 @@ import PaidIcon from '@mui/icons-material/Paid';
 import ListAltIcon from '@mui/icons-material/ListAlt';
 import Inventory2Icon from '@mui/icons-material/Inventory2';
 import AssessmentIcon from '@mui/icons-material/Assessment';
-import InfoIcon from '@mui/icons-material/Info';
+import PetsIcon from '@mui/icons-material/Pets';
 import PersonIcon from '@mui/icons-material/Person';
 import LogoutIcon from '@mui/icons-material/Logout';
 
@@ -130,6 +130,15 @@ const DonorSidebar = ({ pageTitle, open, setOpen }) => {
                         <AssessmentIcon style={{ color: '#424242' }} />
                     </ListItemIcon>
                     <ListItemText primary="Marketplace" />
+                    </ListItemButton>
+                </ListItem>
+
+                <ListItem disablePadding onClick={() => {navigate("/donor/adoptedpets");}}>
+                    <ListItemButton>
+                    <ListItemIcon>
+                        <PetsIcon style={{ color: '#424242' }} />
+                    </ListItemIcon>
+                    <ListItemText primary="Adopted Pets" />
                     </ListItemButton>
                 </ListItem>
 

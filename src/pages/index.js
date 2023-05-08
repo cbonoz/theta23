@@ -11,3 +11,4 @@ export { default as Tutorial } from './tutorial/Tutorial';
 export { default as Error } from './error/Error';
 export { default as DonorAccount } from './donorpage/DonorAccount';
 export { default as Marketplace } from './donorpage/Marketplace';
+export { default as AdoptedPets } from './donorpage/AdoptedPets';
