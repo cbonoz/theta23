@@ -2,13 +2,10 @@ import React from 'react';
 import { Box, Typography, Button } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
-import SwitchAccounts from '../../../components/SwitchAccounts';
-import UserSidebar from '../../../components/navbar/UserSidebar';
-import { ACTIVE_NETWORK } from '../../../constants';
-import RenderBalance from '../../../components/RenderBalance';
 import { useEtherBalance } from '@usedapp/core';
+import DonorSidebar from '../../components/navbar/DonorSidebar';
 
-const Account = ({account}) => {
+const Marketplace = ({account}) => {
   const drawerWidth = 240;
   const amount = useEtherBalance(account);
 
@@ -45,18 +42,14 @@ const Account = ({account}) => {
   return (
     <div>
       <Box sx={{ display: 'flex' }}>
-        <UserSidebar open={open} setOpen={setOpen} pageTitle="Account Overview" />
+        <DonorSidebar open={open} setOpen={setOpen} pageTitle="Account Overview" />
         <Main open={open}>
           <DrawerHeader />
-          <Typography variant="h6" component="h6">Network: {ACTIVE_NETWORK.chainName}</Typography>
-          {account && <Typography variant="h6" component="h6">Address: {account}</Typography>}
-          {/* Render balance */}
-          <RenderBalance account={account} amount={amount} loading={!amount}/>
-          <SwitchAccounts type={"Creator"}/>
+          <Typography>Market Place</Typography>
         </Main>
       </Box>
     </div>
   )
 }
 
-export default Account;
+export default Marketplace;

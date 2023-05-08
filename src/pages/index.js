@@ -9,3 +9,5 @@ export { default as Help } from './userpage/help/Help';
 export { default as Reportbugs } from './reportbugs/Reportbugs';
 export { default as Tutorial } from './tutorial/Tutorial';
 export { default as Error } from './error/Error';
+export { default as DonorAccount } from './donorpage/DonorAccount';
+export { default as Marketplace } from './donorpage/Marketplace';
