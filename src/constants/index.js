@@ -34,31 +34,30 @@ export const CREATE_STEPS = [
 
 export const CREATORS = [
     {
-      name: 'Brian',
-      price: .01,
-      wallet: '0x769694e63eDDE80A98D3279818268a7febe20A90',
+        creatorName: 'Chris',
+        eth: .015,
+        creatorAddress: '0xFc62E94af9aBd25a1D7abfe00F7034Cf154BbBD9',
+        image: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
+      },
+    {
+      creatorName: 'Brian',
+      eth: .01,
+      creatorAddress: '0x769694e63eDDE80A98D3279818268a7febe20A90',
       image: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
     }, {
-      name: 'Chris',
-      price: .015,
-      wallet: '0x769694e63eDDE80A98D3279818268a7febe20A90',
-      image: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
-    }, {
-      name: 'Rika',
-      price: .02,
-      wallet: '0x769694e63eDDE80A98D3279818268a7febe20A90',
+      creatorName: 'Rika',
+      eth: .02,
+      creatorAddress: '0x82BD5fD0F73bA74f335917991519b151f7eD6E02',
       image: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
     },
   ];
 
 export const EXAMPLE_FORM = 
 {
-    creatorAddress: '0xFc62E94af9aBd25a1D7abfe00F7034Cf154BbBD9',
     shelterAddress: '0xFc62E94af9aBd25a1D7abfe00F7034Cf154BbBD9',
-    creatorName: 'Rika',
     petName: 'Doda (Golden retriever)',
     petUrl: 'https://www.thesprucepets.com/thmb/baW88YsVO_JqNBNJPhCFBHbNUMM=/1500x0/filters:no_upscale():strip_icc()/dog-breed-profile-golden-retriever-1117969-hero-da398f6462704058ace0ef5ae007866d.jpeg',
-    eth: 0.01,
+    ...CREATORS[0] // Default to first creator.
   }
 
 export const ACTIVE_NETWORK = ThetaTestnet;

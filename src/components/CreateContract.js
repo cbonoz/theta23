@@ -109,9 +109,7 @@ function CreateContract({ isLoggedIn, signer, provider, blockExplorer }) {
 
   const selectCreator = (creator) => {
     updateInfo({
-      creatorName: creator.name,
-      creatorAddress: creator.wallet,
-      eth: creator.price,
+      ...creator
     })
   };
 
@@ -220,10 +218,10 @@ function CreateContract({ isLoggedIn, signer, provider, blockExplorer }) {
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="div">
-                    {creator.name}
+                    {creator.creatorName}
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                    {creator.price} Eth
+                    {creator.eth} Eth
                   </Typography>
                 </CardContent>
                 <CardActions>
