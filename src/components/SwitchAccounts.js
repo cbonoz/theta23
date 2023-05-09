@@ -38,7 +38,7 @@ const SwitchAccounts = ({type}) => {
             <Typography id="modal-modal-title" variant="h6" component="h2">
                 Switch Account Type
             </Typography>
-            <Typography>You are currently logged in as a: {type}</Typography>
+            <Typography>You are currently logged in as a <b>{type}</b>.</Typography>
             <br/>
             <Typography>Switch to:</Typography>
             <div>
