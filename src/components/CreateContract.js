@@ -111,7 +111,7 @@ function CreateContract({ isLoggedIn, signer, provider, blockExplorer }) {
     updateInfo({
       creatorName: creator.name,
       creatorAddress: creator.wallet,
-      price: creator.price,
+      eth: creator.price,
     })
   };
 
