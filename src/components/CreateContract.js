@@ -4,17 +4,17 @@ import React, { useState, useEffect } from "react";
 // import { storeFiles } from "../util/stor";
 import { deployContract } from "../contract/adoptContract";
 import { getListingUrl, ipfsUrl, transactionUrl } from "../util";
-import { Button, Input, Grid, Box, InputLabel } from "@mui/material"
+import { Button, Input, Grid, Box, InputLabel, Card, CardContent, CardHeader } from "@mui/material"
 import { ethers } from 'ethers'
 import { useEthers } from "@usedapp/core";
-import { APP_NAME, EXAMPLE_FORM } from "../constants";
+import { ACTIVE_NETWORK, APP_NAME, EXAMPLE_FORM } from "../constants";
 import { LoadingButton } from "@mui/lab";
 import Listify from "./Listify";
 
 const LAST_STEP = 3;
 
 function CreateContract({ isLoggedIn, signer, provider, blockExplorer }) {
-  const { activateBrowserWallet, account } = useEthers();
+  const { activateBrowserWallet, switchNetwork, chainId, account } = useEthers();
   const [currentStep, setCurrentStep] = useState(0);
 
   useEffect(() => {
@@ -46,10 +46,21 @@ function CreateContract({ isLoggedIn, signer, provider, blockExplorer }) {
         alert("At least one file must be added");
         return;
       }
+
+      // Ethereum request switch if not on ACTIVE_NETWORK.id
+      if(chainId !== ACTIVE_NETWORK.chainId) {
+        try {
+          await switchNetwork(ACTIVE_NETWORK.chainId)
+        } catch (e) {
+          alert(`Please switch your wallet to ${ACTIVE_NETWORK.name} to continue`)
+          return;
+        }
+      }
+
       setLoading(true);
 
       try {
-        const amount = ethers.utils.parseUnits(info.eth.toString(), 'ether').toString()
+        
 
         let res = "";
         // TODO: upload pet photos to IPFS
@@ -66,7 +77,7 @@ function CreateContract({ isLoggedIn, signer, provider, blockExplorer }) {
           info.creatorName,
           info.creatorAddress,
           info.shelterAddress,
-          amount
+          info.eth
         );
 
         console.log("deployed contract", contract);
@@ -214,28 +225,26 @@ function CreateContract({ isLoggedIn, signer, provider, blockExplorer }) {
 
             <Box sx={{ m: 1 }}>
 
-<InputLabel
-  htmlFor="component-simple"
->Shelter address</InputLabel>
+              <InputLabel
+                htmlFor="component-simple"
+              >Shelter address</InputLabel>
 
-<Input
-  addonBefore={"Shelter Address"}
-  fullWidth
-  placeholder="Shelter Address: "
-  value={info.shelterAddress}
-/>
+              <Input
+                addonBefore={"Shelter Address"}
+                fullWidth
+                placeholder="Shelter Address: "
+                value={info.shelterAddress}
+              />
 
-</Box>
+            </Box>
             {/* <p><br/>{UPLOAD_INFO}</p> */}
           </div>
         );
       case 2: // upload
-        return (
-          <div>
-            <Listify
-              object={info}/>
-            {/* <StreamDropzone files={files} setFiles={setFiles} /> */}
-          </div>
+        return (<div>
+          <h2 className="sell-header">Preview creation</h2>
+          <Listify object={info} />
+        </div>
         );
       case 3: // done
         return (
@@ -246,23 +255,10 @@ function CreateContract({ isLoggedIn, signer, provider, blockExplorer }) {
               <a target="_blank" href={transactionUrl(result.transactionHash)}>{result.transactionHash}</a></p>}
 
             <p>Share the contract purchase address below!</p>
-            {Object.keys(result).map((k) => {
-              return (
-                <li>
-                  {k}: {JSON.stringify(result[k]).replaceAll('"', "")}
-                </li>
-              );
-            })}
+            <Listify object={result} />
             <br />
             <h3>Listing information</h3>
-            {Object.keys(info).map((k) => {
-              return (
-                <li key={k}>
-                  {k}: {JSON.stringify(info[k]).replaceAll('"', "")}
-                </li>
-              );
-            })}
-
+            <Listify object={info} />
             {result.url && (
               <a href={result.url} target="_blank">
                 Click here to view contract
@@ -275,7 +271,7 @@ function CreateContract({ isLoggedIn, signer, provider, blockExplorer }) {
 
   return (
     <div className="content">
-      <h1 className="sell-heading">Publish a new {APP_NAME} contract</h1>
+      {/* <h1 className="sell-heading">Publish a new {APP_NAME} contract</h1> */}
       <Grid container spacing={2}>
         <Grid item xs={6} md={8}>
           {/* <Steps current={currentStep}>
@@ -285,7 +281,13 @@ function CreateContract({ isLoggedIn, signer, provider, blockExplorer }) {
           <Step title="Done" description="Share your contract." />
         </Steps> */}
           {/* <Content> */}
-          <div className="sell-area">{getBody()}</div>
+          <div className="sell-area">
+            <Card className="standard-card" title="Preview creation">
+              <CardContent>
+                {getBody()}
+              </CardContent>
+            </Card>
+          </div>
           {/* </Content> */}
           {(currentStep !== 0 || (currentStep !== 1 && !isLoggedIn)) && (
             <Button
@@ -301,7 +303,9 @@ function CreateContract({ isLoggedIn, signer, provider, blockExplorer }) {
             <LoadingButton
               disabled={loading || !account}
               loading={loading}
-              type="primary"
+
+              variant="text"
+              color="primary"
               onClick={() => updateStep(1)}
             >
               {currentStep === LAST_STEP - 1 ? "Create Contract" : "Next"}

@@ -32,12 +32,13 @@ export async function deployContract(petName, petUrl, creatorName, creatorAddr, 
 
   const creatorAddress = ethers.utils.getAddress(creatorAddr);
   const shelterAddress = ethers.utils.getAddress(shelterAddr);
-  console.log('deploying', petName, petUrl, creatorName, creatorAddress, shelterAddress, priceEth)
+  const priceWei = ethers.utils.parseUnits(priceEth.toString(), 'ether')
+  console.log('deploying', petName, petUrl, creatorName, creatorAddress, shelterAddress, priceEth, priceWei)
 
   // Start deployment, returning a promise that resolves to a contract object
   let contract;
   const options = {value: ethers.utils.parseEther(priceEth + "")}
-  contract = await factory.deploy(petName, petUrl, creatorName, creatorAddress, shelterAddress, priceEth, options);
+  contract = await factory.deploy(petName, petUrl, creatorName, creatorAddress, shelterAddress, priceWei, options);
   await contract.deployed();
   console.log("Contract deployed to address:", contract.address);
   return contract;

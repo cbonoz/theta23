@@ -8,6 +8,17 @@
     text-align: center;
 }
 
+.standard-card {
+    padding: 20px;
+    min-width: 300px;
+}
+
+.sell-header {margin-bottom: 10px;}
+
+.bold {
+    font-weight: bold;
+}
+
 .error-text {
     margin-top: 10px;
     margin-bottom: 10px;
