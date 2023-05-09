@@ -4,7 +4,19 @@ import React, { useState, useEffect } from "react";
 // import { storeFiles } from "../util/stor";
 import { deployContract } from "../contract/adoptContract";
 import { getListingUrl, ipfsUrl, transactionUrl } from "../util";
-import { Button, Input, Grid, Box, InputLabel } from "@mui/material"
+import {
+  Button,
+  Input,
+  Grid,
+  Box,
+  InputLabel,
+  Card,
+  CardActions,
+  CardContent,
+  CardMedia,
+  Typography,
+} from "@mui/material"
+
 import { ethers } from 'ethers'
 import { useEthers } from "@usedapp/core";
 import { APP_NAME, EXAMPLE_FORM } from "../constants";
@@ -12,6 +24,25 @@ import { LoadingButton } from "@mui/lab";
 import Listify from "./Listify";
 
 const LAST_STEP = 3;
+
+const creators = [
+ {
+    name: 'Brian',
+    price: 20,
+    wallet: '0x769694e63eDDE80A98D3279818268a7febe20A90',
+    image: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
+ },{
+    name: 'Chris',
+    price: 50,
+    wallet: '0x769694e63eDDE80A98D3279818268a7febe20A90',
+    image: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
+ },{
+    name: 'Rika',
+    price: 100,
+    wallet: '0x769694e63eDDE80A98D3279818268a7febe20A90',
+    image: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
+ },
+];
 
 function CreateContract({ isLoggedIn, signer, provider, blockExplorer }) {
   const { activateBrowserWallet, account } = useEthers();
@@ -94,6 +125,13 @@ function CreateContract({ isLoggedIn, signer, provider, blockExplorer }) {
 
     console.log("update step", newStep);
     setCurrentStep(newStep);
+  };
+
+  const selectCreator = (creator) => {
+    updateInfo({
+      creatorName: creator.name,
+      creatorAddress: creator.wallet,
+    })
   };
 
   useEffect(() => {
@@ -214,19 +252,47 @@ function CreateContract({ isLoggedIn, signer, provider, blockExplorer }) {
 
             <Box sx={{ m: 1 }}>
 
-<InputLabel
-  htmlFor="component-simple"
->Shelter address</InputLabel>
+            <InputLabel
+              htmlFor="component-simple"
+            >Shelter address</InputLabel>
 
-<Input
-  addonBefore={"Shelter Address"}
-  fullWidth
-  placeholder="Shelter Address: "
-  value={info.shelterAddress}
-/>
+            <Input
+              addonBefore={"Shelter Address"}
+              fullWidth
+              placeholder="Shelter Address: "
+              value={info.shelterAddress}
+            />
 
-</Box>
+            </Box>
             {/* <p><br/>{UPLOAD_INFO}</p> */}
+            <div>
+              {
+                creators.map(creator => {
+                  return (
+                    <Card sx={{ maxWidth: 345 }}>
+                      <CardMedia
+                        sx={{ height: 140 }}
+                        image={creator.image}
+                        title="green iguana"
+                      />
+                      <CardContent>
+                        <Typography gutterBottom variant="h5" component="div">
+                          {creator.name}
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary">
+                          ${creator.price}
+                        </Typography>
+                      </CardContent>
+                      <CardActions>
+                        <Button size="small" onClick={() => selectCreator(creator)}>
+                          {'Select'}
+                        </Button>
+                      </CardActions>
+                    </Card>
+                  )
+                })
+              }
+            </div>
           </div>
         );
       case 2: // upload
