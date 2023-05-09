@@ -14,6 +14,10 @@
     margin: 20px;
 }
 
+.standard-btn {
+    margin: 10px;
+}
+
 .creator-card {
     max-width: 250px;
     min-width: 120px;

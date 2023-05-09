@@ -48,6 +48,7 @@ const Account = ({account}) => {
         <UserSidebar open={open} setOpen={setOpen} pageTitle="Account Overview" />
         <Main open={open}>
           <DrawerHeader />
+            <h1>User information</h1>
           <Typography variant="h6" component="h6">Network: {ACTIVE_NETWORK.chainName}</Typography>
           {account && <Typography variant="h6" component="h6">Address: {account}</Typography>}
           {/* Render balance */}
