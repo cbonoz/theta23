@@ -347,7 +347,7 @@ function CreateContract({ isLoggedIn, signer, provider, blockExplorer }) {
             <LoadingButton
               disabled={loading || !account}
               loading={loading}
-              variant="text"
+              variant="contained"
               color="primary"
               onClick={() => updateStep(1)}
             >
