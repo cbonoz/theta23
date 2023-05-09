@@ -4,10 +4,10 @@ import React, { useState, useEffect } from "react";
 // import { storeFiles } from "../util/stor";
 import { deployContract } from "../contract/adoptContract";
 import { getListingUrl, ipfsUrl, transactionUrl } from "../util";
-import { Button, Input, Grid, Box, InputLabel, Card, CardContent, CardHeader } from "@mui/material"
+import { Button, CardMedia, CardActions, Typography, Input, Grid, Box, InputLabel, Card, CardContent, CardHeader } from "@mui/material"
 import { ethers } from 'ethers'
 import { useEthers } from "@usedapp/core";
-import { ACTIVE_NETWORK, APP_NAME, EXAMPLE_FORM } from "../constants";
+import { ACTIVE_NETWORK, APP_NAME, CREATORS, EXAMPLE_FORM } from "../constants";
 import { LoadingButton } from "@mui/lab";
 import Listify from "./Listify";
 
@@ -48,7 +48,7 @@ function CreateContract({ isLoggedIn, signer, provider, blockExplorer }) {
       }
 
       // Ethereum request switch if not on ACTIVE_NETWORK.id
-      if(chainId !== ACTIVE_NETWORK.chainId) {
+      if (chainId !== ACTIVE_NETWORK.chainId) {
         try {
           await switchNetwork(ACTIVE_NETWORK.chainId)
         } catch (e) {
@@ -60,7 +60,7 @@ function CreateContract({ isLoggedIn, signer, provider, blockExplorer }) {
       setLoading(true);
 
       try {
-        
+
 
         let res = "";
         // TODO: upload pet photos to IPFS
@@ -105,6 +105,14 @@ function CreateContract({ isLoggedIn, signer, provider, blockExplorer }) {
 
     console.log("update step", newStep);
     setCurrentStep(newStep);
+  };
+
+  const selectCreator = (creator) => {
+    updateInfo({
+      creatorName: creator.name,
+      creatorAddress: creator.wallet,
+      price: creator.price,
+    })
   };
 
   useEffect(() => {
@@ -206,8 +214,6 @@ function CreateContract({ isLoggedIn, signer, provider, blockExplorer }) {
               />
             </Box>
 
-
-
             <Box sx={{ m: 1 }}>
 
               <InputLabel
@@ -232,7 +238,7 @@ function CreateContract({ isLoggedIn, signer, provider, blockExplorer }) {
               <Input
                 addonBefore={"Shelter Address"}
                 fullWidth
-                placeholder="Shelter Address: "
+                placeholder="Shelter Address"
                 value={info.shelterAddress}
               />
 
@@ -288,6 +294,35 @@ function CreateContract({ isLoggedIn, signer, provider, blockExplorer }) {
               </CardContent>
             </Card>
           </div>
+          {currentStep === 1 && <div>
+            <h3>Select a pre-existing creator</h3>
+            {
+              CREATORS.map((creator, index) => {
+                return (
+                  <Card key={index} className="creator-card">
+                    <CardMedia
+                      sx={{ height: 140 }}
+                      image={creator.image}
+                      title="green iguana"
+                    />
+                    <CardContent>
+                      <Typography gutterBottom variant="h5" component="div">
+                        {creator.name}
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary">
+                        ${creator.price}
+                      </Typography>
+                    </CardContent>
+                    <CardActions>
+                      <Button size="small" onClick={() => selectCreator(creator)}>
+                        {'Select'}
+                      </Button>
+                    </CardActions>
+                  </Card>
+                )
+              })
+            }
+          </div>}
           {/* </Content> */}
           {(currentStep !== 0 || (currentStep !== 1 && !isLoggedIn)) && (
             <Button

@@ -16,6 +16,25 @@ export const APP_THEME = createTheme({
     }
 });
 
+export const CREATORS = [
+    {
+      name: 'Brian',
+      price: .01,
+      wallet: '0x769694e63eDDE80A98D3279818268a7febe20A90',
+      image: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
+    }, {
+      name: 'Chris',
+      price: .015,
+      wallet: '0x769694e63eDDE80A98D3279818268a7febe20A90',
+      image: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
+    }, {
+      name: 'Rika',
+      price: .02,
+      wallet: '0x769694e63eDDE80A98D3279818268a7febe20A90',
+      image: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
+    },
+  ];
+
 export const EXAMPLE_FORM = 
 {
     creatorAddress: '0xFc62E94af9aBd25a1D7abfe00F7034Cf154BbBD9',
