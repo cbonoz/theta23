@@ -27,7 +27,7 @@ export const CREATE_STEPS = [
     },
     {
         label: 'Mint NFT',
-        description: 'Mint your adoption NFT and support your favorite creator and help the pet find a home.',
+        description: 'By minting the NFT you support your favorite creator and help the pet find a home.',
     },
 
 ]
