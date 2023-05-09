@@ -4,10 +4,10 @@ import React, { useState, useEffect } from "react";
 // import { storeFiles } from "../util/stor";
 import { deployContract } from "../contract/adoptContract";
 import { getListingUrl, ipfsUrl, transactionUrl } from "../util";
-import { Button, CardMedia, CardActions, Typography, Input, Grid, Box, InputLabel, Card, CardContent, CardHeader } from "@mui/material"
+import { Button, CardMedia, CardActions, Typography, Input, Grid, Box, InputLabel, Card, CardContent, CardHeader, Stepper, Step, StepLabel, StepContent } from "@mui/material"
 import { ethers } from 'ethers'
 import { useEthers } from "@usedapp/core";
-import { ACTIVE_NETWORK, APP_NAME, CREATORS, EXAMPLE_FORM } from "../constants";
+import { ACTIVE_NETWORK, APP_NAME, CREATE_STEPS, CREATORS, EXAMPLE_FORM } from "../constants";
 import { LoadingButton } from "@mui/lab";
 import Listify from "./Listify";
 
@@ -183,51 +183,7 @@ function CreateContract({ isLoggedIn, signer, provider, blockExplorer }) {
               />
             </Box>
 
-            <Box sx={{ m: 1 }}>
 
-              <InputLabel
-                htmlFor="component-simple"
-              >Enter creator/promoter name</InputLabel>
-
-              <Input
-                addonBefore={"DisplayName"}
-                fullWidth
-                placeholder="Enter creator name"
-                value={info.creatorName}
-                onChange={(e) => updateInfo({ creatorName: e.target.value })}
-              />
-
-            </Box>
-
-            <Box sx={{ m: 1 }}>
-
-              <InputLabel
-                htmlFor="component-simple"
-              >Enter adoption price (Eth)</InputLabel>
-
-              <Input
-                fullWidth
-                addonBefore={"Price (eth)"}
-                placeholder="Name your eth price"
-                value={info.eth}
-                onChange={(e) => updateInfo({ eth: e.target.value })}
-              />
-            </Box>
-
-            <Box sx={{ m: 1 }}>
-
-              <InputLabel
-                htmlFor="component-simple"
-              >Creator address</InputLabel>
-
-              <Input
-                addonBefore={"Payment Address"}
-                fullWidth
-                placeholder="Payment Address: "
-                value={info.creatorAddress}
-              />
-
-            </Box>
 
             <Box sx={{ m: 1 }}>
 
@@ -243,16 +199,102 @@ function CreateContract({ isLoggedIn, signer, provider, blockExplorer }) {
               />
 
             </Box>
+
             {/* <p><br/>{UPLOAD_INFO}</p> */}
           </div>
         );
-      case 2: // upload
+
+      case 2:
+        return (<div>
+          <h2 className="sell-header">
+            Select a creator to promote this pet
+          </h2>
+
+          {CREATORS.map((creator, index) => {
+            return (
+              <Card key={index} className="creator-card">
+                <CardMedia
+                  sx={{ height: 140 }}
+                  image={creator.image}
+                  title="green iguana"
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="div">
+                    {creator.name}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    {creator.price} Eth
+                  </Typography>
+                </CardContent>
+                <CardActions>
+                  <Button size="small" onClick={() => selectCreator(creator)}>
+                    {'Select'}
+                  </Button>
+                </CardActions>
+              </Card>
+            )
+          })
+          }
+
+
+          <Box sx={{ m: 1 }}>
+
+            <InputLabel
+              htmlFor="component-simple"
+            >Enter creator/promoter name</InputLabel>
+
+            <Input
+              addonBefore={"DisplayName"}
+              fullWidth
+              disabled
+              placeholder="Enter creator name"
+              value={info.creatorName}
+              onChange={(e) => updateInfo({ creatorName: e.target.value })}
+            />
+
+          </Box>
+
+          <Box sx={{ m: 1 }}>
+
+            <InputLabel
+              htmlFor="component-simple"
+            >Creator address</InputLabel>
+
+            <Input
+              addonBefore={"Payment Address"}
+              fullWidth
+              disabled
+              placeholder="Payment Address: "
+              value={info.creatorAddress}
+            />
+
+          </Box>
+
+
+          <Box sx={{ m: 1 }}>
+
+            <InputLabel
+              htmlFor="component-simple"
+            >Enter adoption price (Eth)</InputLabel>
+
+            <Input
+              fullWidth
+              disabled
+              addonBefore={"Price (eth)"}
+              placeholder="Name your eth price"
+              value={info.eth}
+              onChange={(e) => updateInfo({ eth: e.target.value })}
+            />
+          </Box>
+
+        </div>)
+      case 3: // upload
         return (<div>
           <h2 className="sell-header">Preview creation</h2>
           <Listify object={info} />
         </div>
         );
-      case 3: // done
+      case 4: // done
         return (
           <div className="complete-section">
             <h2 className="sell-header green">Complete!</h2>
@@ -279,13 +321,8 @@ function CreateContract({ isLoggedIn, signer, provider, blockExplorer }) {
     <div className="content">
       {/* <h1 className="sell-heading">Publish a new {APP_NAME} contract</h1> */}
       <Grid container spacing={2}>
-        <Grid item xs={6} md={8}>
-          {/* <Steps current={currentStep}>
-          <Step title="Login" description="Authenticate." />
-          <Step title="Information" description="What are you listing?" />
-          <Step title="Upload" description="Upload video(s) for purchase." />
-          <Step title="Done" description="Share your contract." />
-        </Steps> */}
+        <Grid item xs={16} md={8} lg={8}>
+
           {/* <Content> */}
           <div className="sell-area">
             <Card className="standard-card" title="Preview creation">
@@ -294,35 +331,7 @@ function CreateContract({ isLoggedIn, signer, provider, blockExplorer }) {
               </CardContent>
             </Card>
           </div>
-          {currentStep === 1 && <div>
-            <h3>Select a pre-existing creator</h3>
-            {
-              CREATORS.map((creator, index) => {
-                return (
-                  <Card key={index} className="creator-card">
-                    <CardMedia
-                      sx={{ height: 140 }}
-                      image={creator.image}
-                      title="green iguana"
-                    />
-                    <CardContent>
-                      <Typography gutterBottom variant="h5" component="div">
-                        {creator.name}
-                      </Typography>
-                      <Typography variant="body2" color="text.secondary">
-                        ${creator.price}
-                      </Typography>
-                    </CardContent>
-                    <CardActions>
-                      <Button size="small" onClick={() => selectCreator(creator)}>
-                        {'Select'}
-                      </Button>
-                    </CardActions>
-                  </Card>
-                )
-              })
-            }
-          </div>}
+
           {/* </Content> */}
           {(currentStep !== 0 || (currentStep !== 1 && !isLoggedIn)) && (
             <Button
@@ -338,15 +347,39 @@ function CreateContract({ isLoggedIn, signer, provider, blockExplorer }) {
             <LoadingButton
               disabled={loading || !account}
               loading={loading}
-
               variant="text"
               color="primary"
               onClick={() => updateStep(1)}
             >
-              {currentStep === LAST_STEP - 1 ? "Create Contract" : "Next"}
+              {currentStep === LAST_STEP - 1 ? "Mint Adoptify NFT" : "Next"}
             </LoadingButton>
           )}
         </Grid>
+
+        <Grid
+          item
+          xs={4}
+          md={4}
+          lg={4}
+        >
+        <Card className="standard-card" title="Instructions">
+          <p><b>Instructions</b></p>
+            <CardContent>
+              <Stepper activeStep={currentStep-1} orientation="vertical">
+                {CREATE_STEPS.map(({ label, description }, index) => (
+                  <Step key={label}>
+                    <StepLabel>{label}</StepLabel>
+                    <Typography>
+                    {description}
+                    </Typography>
+                  </Step>
+                ))}
+              </Stepper>
+            </CardContent>
+          </Card>
+        </Grid>
+
+
       </Grid>
     </div>
   );

@@ -16,6 +16,22 @@ export const APP_THEME = createTheme({
     }
 });
 
+export const CREATE_STEPS = [
+    {
+        label: 'Pet Info',
+        description: 'Enter your pet\'s name and image.',
+    },
+    {
+        label: 'Creator Info',
+        description: 'Select a creator to promote the pet for adoption.',
+    },
+    {
+        label: 'Mint NFT',
+        description: 'Mint your adoption NFT and support your favorite creator and help the pet find a home.',
+    },
+
+]
+
 export const CREATORS = [
     {
       name: 'Brian',

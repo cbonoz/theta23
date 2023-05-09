@@ -13,7 +13,7 @@ const Transactions = ({ account }) => {
   const [error, setError] = useState(null);
 
   async function fetchTransactionForAccount() {
-    setLoading(true)
+    setLoading(true);
     setError(null);
     try {
       const res = await getTransactionsForAccountAddress(account || '0x1c155c0eb7f2fb63ce149e7586d8595773b3a35a');
