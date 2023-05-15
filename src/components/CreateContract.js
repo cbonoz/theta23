@@ -28,6 +28,8 @@ function CreateContract({ isLoggedIn, signer, provider, blockExplorer }) {
   const [result, setResult] = useState({});
   const [loading, setLoading] = useState(false);
 
+  const [creators, setCreators] = useState({});
+
   const setDemoData = (e) => {
     e.preventDefault();
     setInfo({ ...EXAMPLE_FORM });
@@ -113,7 +115,23 @@ function CreateContract({ isLoggedIn, signer, provider, blockExplorer }) {
     })
   };
 
+  const fetchCreators = () => {
+    fetch("https://api.theta.tv/v1/gfuel/channel/list?incl_off=true&number=8")
+      .then(response => {
+        return response.json()
+      })
+      .then(data => {
+        setCreators(data.body)
+        console.log(data.body)
+      }
+    )
+  }
+
   useEffect(() => {
+    if (Object.keys(creators).length === 0) {
+      fetchCreators()
+    }
+    console.log(creators)
     if (!!account) {
       if (currentStep === 0) {
         updateStep(1)
@@ -208,20 +226,20 @@ function CreateContract({ isLoggedIn, signer, provider, blockExplorer }) {
             Select a creator to promote this pet
           </h2>
 
-          {CREATORS.map((creator, index) => {
+          {creators.map((creator, index) => {
             return (
               <Card key={index} className="creator-card">
                 <CardMedia
                   sx={{ height: 140 }}
-                  image={creator.image}
+                  image={creator.streamer.avatar_url}
                   title="green iguana"
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="div">
-                    {creator.creatorName}
+                    {creator.streamer.username}
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                    {creator.eth} Eth
+                    {creator.streamer.id} Eth
                   </Typography>
                 </CardContent>
                 <CardActions>
