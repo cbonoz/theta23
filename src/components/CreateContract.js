@@ -234,6 +234,7 @@ function CreateContract({ isLoggedIn, signer, provider, blockExplorer }) {
             </Box>
 
             {/* <p><br/>{UPLOAD_INFO}</p> */}
+            {info.petUrl && (<img src={info.petUrl} alt="Pet Image" />)}
           </div>
         );
 
