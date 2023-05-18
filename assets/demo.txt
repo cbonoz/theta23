@@ -1,0 +1,42 @@
+
+[Open page of adoption shelter]
+
+
+Narrator: "Welcome to the Adoptify hackathon demo. Today, we'll show you how our platform utilizes NFTs and blockchain technology to address the limitations of existing solutions and create a positive impact for shelter animals. Let's dive in!"
+
+Narrator: "One of the main challenges with existing solutions is the lack of awareness and funding for shelters. 
+
+Existing solutions fall short by either:
+1. Not giving direct funding to creators.
+2. Not having a curated collection of content creators. By using Theta we can tap into a community of creators looking to further monetize their content and do good.
+3. Lack of transparency or community around helping adoption. Going to a shelter and helping a pet get adopted is great, but with a web platform this can scale to thousands of pets at once.
+
+Adoptify tackles this issue by leveraging NFTs and the blockchain to raise awareness and generate direct funding for shelter animals."
+
+[Scene transitions to the NFT creation page.]
+
+Narrator: "Let's walk through the process of minting an NFT from a known creator, where the funds go directly to the creator themselves."
+
+[The user selects an NFT artwork created by a known artist.]
+
+Narrator: "After choosing the artwork, you can proceed to mint the NFT. This action triggers a smart contract on the blockchain, ensuring transparency and security throughout the process."
+
+[The progress bar completes, and the NFT is successfully minted.]
+
+Narrator: "Congratulations! You've just minted a unique NFT that represents your support for animal welfare. It's now part of the Adoptify ecosystem, contributing to our collective mission."
+
+[Scene transitions to the NFT detail page.]
+
+Narrator: "On the NFT detail page, you'll find all the relevant information about your NFT, including its unique identifier, the creator's details, and the portion of funds allocated to shelters."
+
+[The screen shows the NFT detail page with all the information.]
+
+Narrator: "But Adoptify goes beyond the creation and sale of NFTs. We foster a vibrant community of individuals passionate about animal welfare. Through the platform, you can connect with like-minded members, participate in events and campaigns, and contribute directly to shelter initiatives."
+
+[Scene transitions to the Adoptify community page.]
+
+Narrator: "Our community section allows you to engage with fellow animal lovers, share adoption stories, and learn about the impact your contributions are making."
+
+[The screen shows the community page with various discussions and activities.]
+
+Narrator: "In conclusion, Adoptify bridges the gap between art, technology, and animal welfare. By minting NFTs from known creators and supporting them while allocating significant funds to shelters, we create a sustainable ecosystem that drives adoption rates and makes a real difference in the lives of shelter animals."
