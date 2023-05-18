@@ -4,7 +4,23 @@ import React, { useState, useEffect } from "react";
 // import { storeFiles } from "../util/stor";
 import { deployContract } from "../contract/adoptContract";
 import { getListingUrl, ipfsUrl, transactionUrl } from "../util";
-import { Button, CardMedia, CardActions, Typography, Input, Grid, Box, InputLabel, Card, CardContent, CardHeader, Stepper, Step, StepLabel, StepContent } from "@mui/material"
+import {
+  Button,
+  CardMedia,
+  CardActions,
+  Typography,
+  Input,
+  Grid,
+  Box,
+  InputLabel,
+  Card,
+  CardContent,
+  CardHeader,
+  Stepper,
+  Step,
+  StepLabel,
+  StepContent,
+} from "@mui/material"
 import { ethers } from 'ethers'
 import { useEthers } from "@usedapp/core";
 import { ACTIVE_NETWORK, APP_NAME, CREATE_STEPS, CREATORS, EXAMPLE_FORM } from "../constants";
@@ -111,7 +127,9 @@ function CreateContract({ isLoggedIn, signer, provider, blockExplorer }) {
 
   const selectCreator = (creator) => {
     updateInfo({
-      ...creator
+      creatorName: creator.streamer.username,
+      creatorAddress: '0x4265690709E6C40a92ac8dc2A61AC8F1913Fe313',
+      eth: '0.01',
     })
   };
 
@@ -122,7 +140,6 @@ function CreateContract({ isLoggedIn, signer, provider, blockExplorer }) {
       })
       .then(data => {
         setCreators(data.body)
-        console.log(data.body)
       }
     )
   }
@@ -227,13 +244,16 @@ function CreateContract({ isLoggedIn, signer, provider, blockExplorer }) {
           </h2>
 
           {creators.map((creator, index) => {
+            console.log(creator.live_stream.video_urls[0].url)
             return (
               <Card key={index} className="creator-card">
-                <CardMedia
-                  sx={{ height: 140 }}
-                  image={creator.streamer.avatar_url}
-                  title="green iguana"
-                />
+                <a href={'https://www.theta.tv/' + creator.streamer.username} target="_blank">
+                  <CardMedia
+                    sx={{ height: 140 }}
+                    image={creator.streamer.avatar_url}
+                    title="theta streamer"
+                  />
+                </a>
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="div">
                     {creator.streamer.username}
@@ -314,10 +334,12 @@ function CreateContract({ isLoggedIn, signer, provider, blockExplorer }) {
         return (
           <div className="complete-section">
             <h2 className="sell-header green">Complete!</h2>
-            {result.transactionHash && <p>
+            {
+              result.transactionHash && <p>
               View transaction<br />
-              <a target="_blank" href={transactionUrl(result.transactionHash)}>{result.transactionHash}</a></p>}
-
+              <a target="_blank" href={transactionUrl(result.transactionHash)}>{result.transactionHash}</a>
+              </p>
+            }
             <p>Share the contract purchase address below!</p>
             <Listify object={result} />
             <br />
