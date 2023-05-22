@@ -234,7 +234,13 @@ function CreateContract({ isLoggedIn, signer, provider, blockExplorer }) {
             </Box>
 
             {/* <p><br/>{UPLOAD_INFO}</p> */}
-            {info.petUrl && (<img src={info.petUrl} alt="Pet Image" />)}
+            {info.petUrl && (<div>
+                <br/>
+                <h3>Preview</h3>
+                <br/>
+                <img className="pet-preview" src={info.petUrl} alt="Pet Image" />
+              </div>
+              )}
           </div>
         );
 
@@ -278,7 +284,7 @@ function CreateContract({ isLoggedIn, signer, provider, blockExplorer }) {
 
             <InputLabel
               htmlFor="component-simple"
-            >Enter creator/promoter name</InputLabel>
+            >Creator/promoter name</InputLabel>
 
             <Input
               addonBefore={"DisplayName"}
