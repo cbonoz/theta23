@@ -2,7 +2,7 @@
 import { useEtherBalance, useEthers } from "@usedapp/core";
 import RenderBalance from "./RenderBalance";
 
-export default function ConnectButton() {
+export default function ConnectButton({text}) {
   const { activateBrowserWallet, account } = useEthers();
   const amount = useEtherBalance(account);
 
@@ -19,7 +19,7 @@ export default function ConnectButton() {
   return (
     <span className="right">
       <button type="primary" onClick={handleConnectWallet}>
-        Connect to a wallet
+        {text || 'Connect wallet'}
       </button>
     </span>
   );

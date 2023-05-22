@@ -3,9 +3,11 @@ import './header.css';
 import petting_dog from '../../assets/pettingdog.svg';
 import { useNavigate } from 'react-router-dom';
 import ConnectButton from '../../components/ConnectButton';
+import { useEthers } from '@usedapp/core';
 
 const Header = () => {
   const navigate = useNavigate();
+  const { account } = useEthers();
 
   return (
     <div className="toku__header section__padding" id="home">
@@ -15,7 +17,10 @@ const Header = () => {
 
           <div className='toku__header-content__input'>
             {/* <input id="email" type="email" placeholder="Your Email Address" autoComplete="on"></input> */}
-            <button onClick={() => navigate('/user/transactions')}>Go to transactions</button>
+            {account ? 
+              <button onClick={() => navigate('/user/transactions')}>Go to transactions</button> :
+              <ConnectButton text="Connect wallet to begin" />
+            }
           </div>
 
         </div>
