@@ -4,6 +4,7 @@ import { Box, Typography, Button } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
 import SwitchAccounts from '../../../components/SwitchAccounts';
+import SetUpAccount from '../../../components/SetUpAccount';
 import UserSidebar from '../../../components/navbar/UserSidebar';
 import { ACTIVE_NETWORK } from '../../../constants';
 import RenderBalance from '../../../components/RenderBalance';
@@ -73,7 +74,10 @@ function Account ({account}) {
             <h3>Email: {userData.email}</h3>
             <h3>First Name: {userData.firstName}</h3>
             <h3>Last Name: {userData.lastName}</h3>
+            <h3>User Name: {userData.userName}</h3>
           </div>
+          <SetUpAccount />
+
           <Typography variant="h6" component="h6">Network: {ACTIVE_NETWORK.chainName}</Typography>
           {account && <Typography variant="h6" component="h6">Address: {account}</Typography>}
           {/* Render balance */}

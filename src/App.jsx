@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Landing, Contact, Account, Transactions, Sell, Help, Tutorial, Reportbugs, Terms, Privacy, Error, DonorAccount, Marketplace, AdoptedPets } from './pages';
+import { Landing, Contact, Account, EditAccount, Transactions, Sell, Help, Tutorial, Reportbugs, Terms, Privacy, Error, DonorAccount, Marketplace, AdoptedPets } from './pages';
 import { Route, Routes, Outlet, Navigate, useNavigate } from 'react-router-dom';
 
 import CssBaseline from '@mui/material/CssBaseline'
@@ -29,7 +29,7 @@ const App = () => {
     activateBrowserWallet();
   }, [])
 
-  
+
 
   return (
     <ThemeProvider theme={APP_THEME}>
@@ -42,6 +42,7 @@ const App = () => {
           <Route path="/terms" element={<Terms />} />
           <Route path="user" element={<Outlet />}>
             <Route path="account" element={<Account account={account} />} />
+            <Route path="editaccount" element={<EditAccount account={account} />} />
             <Route path="transactions" element={<Transactions account={account} />} />
             <Route path="sell" element={<Sell account={account} />} />
             <Route path="help" element={<Help />} />
