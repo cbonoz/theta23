@@ -4,10 +4,6 @@ import { Modal } from '@mui/base';
 import { useNavigate } from 'react-router-dom';
 
 const SetUpAccount = () => {
-    const [modalOpen, setModalOpen] = useState(false)
-    const handleOpen = () => {
-        setModalOpen(!modalOpen)
-    };
 
     const style = {
         position: 'absolute',
@@ -27,10 +23,9 @@ const SetUpAccount = () => {
   return (
     <div>
         <br/>
-        <Button variant="contained" onClick={handleOpen}>Set Up Account</Button>
+        {/* <Button variant="contained" onClick={handleOpen}>Set Up Account</Button> */}
         <Modal
-            open={modalOpen}
-            onClose={handleOpen}
+            open={true}
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
         >
