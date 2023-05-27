@@ -27,7 +27,7 @@ const SwitchAccounts = ({type}) => {
   return (
     <div>
         <br/>
-        <Button variant="contained" onClick={handleOpen}>Switch Account Type</Button>
+        <Button variant="outlined" onClick={handleOpen}>Switch Account Type</Button>
         <Modal
             open={modalOpen}
             onClose={handleOpen}

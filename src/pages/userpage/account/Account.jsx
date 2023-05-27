@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Box, Typography, Button } from '@mui/material';
+import { Box, Typography, Button, Card } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
 import SwitchAccounts from '../../../components/SwitchAccounts';
@@ -22,7 +22,7 @@ function Account ({account}) {
   const [userData, setUserData] = useState([]);
   const [open, setOpen] = useState(true);
 
-  // fix bug
+  // fix bug: cannot take {account} as parameter for userRef
   const userRef = doc(db, "users", "0x82BD5fD0F73bA74f335917991519b151f7eD6E02")
 
   useEffect(() => {
@@ -72,21 +72,26 @@ function Account ({account}) {
         <UserSidebar open={open} setOpen={setOpen} pageTitle="Account Overview" />
         <Main open={open}>
           <DrawerHeader />
-          {userData ? (<div>
-            <h1>User information</h1>
-            <div>
-              <h3>Email: {userData.email}</h3>
-              <h3>First Name: {userData.firstName}</h3>
-              <h3>Last Name: {userData.lastName}</h3>
-              <h3>User Name: {userData.userName}</h3>
-            </div>
-            <Button variant="contained" sx={{marginTop: 2, marginRight: 2}} onClick={() => {navigate("/user/editaccount");}}>Edit Account</Button>
-
-            <Typography variant="h6" component="h6">Network: {ACTIVE_NETWORK.chainName}</Typography>
-            {account && <Typography variant="h6" component="h6">Address: {account}</Typography>}
-            {/* Render balance */}
-            <RenderBalance account={account} amount={amount} loading={!amount}/>
-            <Typography>Current Account Type: Creator</Typography>
+          {userData ? (<div align="center">
+            <Card sx={{maxWidth: 700}}>
+              <div>
+                <Typography variant="h2" sx={{mt: 3, mb: 1}} color="primary">Your Account✨</Typography>
+                <img src={userData.profilePic} alt="Profile Pic" height={100} width={100} style={{borderRadius: 50}}/>
+                <Typography>Username: {userData.userName}</Typography>
+                <Typography>Name: {userData.firstName} {userData.lastName}</Typography>
+                <Typography>Email: {userData.email}</Typography>
+                <Button variant="outlined" sx={{marginTop: 2, marginBottom: 3}} onClick={() => {navigate("/user/editaccount");}}>Edit Account Details</Button>
+              </div>
+            </Card>
+            <Card sx={{marginTop: 2, maxWidth: 700}}>
+              <Typography variant="h2" sx={{mt: 3}} color="primary">Your Wallet👛</Typography>
+              <Typography>Balance:</Typography>
+              <RenderBalance account={account} amount={amount} loading={!amount}/>
+              <Typography>Network: {ACTIVE_NETWORK.chainName}</Typography>
+              {account && <Typography sx={{mb: 3}}>Address: {account}</Typography>}
+              {/* Render balance */}
+            </Card>
+            <Typography sx={{marginTop: 2, marginBottom: -2}}>You're currently viewing this site as: Creator 🎨</Typography>
             <SwitchAccounts type={"Creator"}/>
           </div>) : <SetUpAccount/> }
         </Main>
