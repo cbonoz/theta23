@@ -12,7 +12,7 @@ export default function RenderBalance({ account, amount, loading }) {
 
     return (
         <span color="white" fontSize="md">
-            <b>{etherBalance} TFUEL</b> {account.slice(0, 6)}**
+            <b>{etherBalance} TFUEL</b>
         </span>
     );
 }

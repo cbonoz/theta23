@@ -3,3 +3,8 @@ export { default as Footer } from './footer/Footer';
 export { default as Header } from './header/Header';
 export { default as Possibility } from './possibility/Possibility';
 export { default as About } from './about/About';
+export { default as TransactionTabs } from './transactions/TransactionTabs';
+export { default as Summary } from './transactions/Summary';
+export { default as RegisteredPets } from './transactions/RegisteredPets';
+export { default as History } from './transactions/History';
+export { default as Analytics } from './transactions/Analytics';

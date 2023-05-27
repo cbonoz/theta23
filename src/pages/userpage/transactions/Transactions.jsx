@@ -3,6 +3,7 @@ import { Box, CircularProgress, Typography, Card, Grid, Paper, Grow } from '@mui
 import { styled } from '@mui/material/styles';
 
 import UserSidebar from '../../../components/navbar/UserSidebar';
+import {Summary, TransactionTabs} from '../../../containers';
 import { getTransactionsForAccountAddress, getTransactionList } from '../../../util/api';
 import { getRpcError, titleCase } from '../../../util';
 
@@ -108,9 +109,9 @@ const Transactions = ({ account }) => {
           {/* <img src={UserPanel} alt="userpanel" width={1160} height={631} /> */}
           {loading && <CircularProgress />}
           {!loading && <div>
-            <Typography align="center" variant="h2" sx={{mt: 3, mb: 1}} color="primary">Your Transactions</Typography>
+            <Typography align="center" variant="h2" sx={{mt: 2, mb: 1}} color="primary">Your Transactions</Typography>
             <Card sx={{marginBottom: 1}}>
-              <Typography align="center" variant="h6" sx={{mt: 1, mb: 1}} color="primary">Summary</Typography>
+              <Summary />
             </Card>
             <Grow in>
               <Grid container justify="center" alignItems='flex-start' spacing={1}>
@@ -118,7 +119,7 @@ const Transactions = ({ account }) => {
                   <Paper elevation={2}>
                       <div>
                           <Card>
-                            <Typography align="center" variant="h6" sx={{mt: 1, mb: 1}} color="primary">Registered Pets</Typography>
+                            <TransactionTabs />
                           </Card>
                       </div>
                   </Paper>
