@@ -11,5 +11,8 @@ export { default as Reportbugs } from './reportbugs/Reportbugs';
 export { default as Tutorial } from './tutorial/Tutorial';
 export { default as Error } from './error/Error';
 export { default as DonorAccount } from './donorpage/DonorAccount';
+export { default as SponsorAccount } from './sponsorpage/SponsorAccount';
 export { default as Marketplace } from './donorpage/Marketplace';
 export { default as AdoptedPets } from './donorpage/AdoptedPets';
+export { default as SponsoredPets } from './sponsorpage/SponsoredPets';
+export { default as SponsorTransactions } from './sponsorpage/SponsorTransactions';

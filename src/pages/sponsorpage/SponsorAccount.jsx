@@ -4,18 +4,18 @@ import { useNavigate } from 'react-router-dom';
 import { Box, Typography, Button, Card } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
-import SwitchAccounts from '../../../components/SwitchAccounts';
-import SetUpAccount from '../../../components/SetUpAccount';
-import UserSidebar from '../../../components/navbar/UserSidebar';
-import { ACTIVE_NETWORK } from '../../../constants';
-import RenderBalance from '../../../components/RenderBalance';
+import SwitchAccounts from '../../components/SwitchAccounts';
+import SetUpAccount from '../../components/SetUpAccount';
+import UserSidebar from '../../components/navbar/UserSidebar';
+import { ACTIVE_NETWORK } from '../../constants';
+import RenderBalance from '../../components/RenderBalance';
 import { useEtherBalance } from '@usedapp/core';
 
-import { db } from "../../../config/firebase";
+import { db } from "../../config/firebase";
 import { doc, getDoc } from 'firebase/firestore';
 
 
-function Account ({account}) {
+function SponsorAccount ({account}) {
   const drawerWidth = 240;
   const amount = useEtherBalance(account);
 
@@ -91,8 +91,8 @@ function Account ({account}) {
               {account && <Typography sx={{mb: 3}}>Address: {account}</Typography>}
               {/* Render balance */}
             </Card>
-            <Typography sx={{marginTop: 2, marginBottom: -2}}>You're currently viewing this site as: Creator 👩‍🎨</Typography>
-            <SwitchAccounts type={"Creator"}/>
+            <Typography sx={{marginTop: 2, marginBottom: -2}}>You're currently viewing this site as: Sponsor 🎨</Typography>
+            <SwitchAccounts type={"Sponsor"}/>
           </div>) : <SetUpAccount/> }
         </Main>
       </Box>
@@ -100,4 +100,4 @@ function Account ({account}) {
   )
 }
 
-export default Account;
+export default SponsorAccount;

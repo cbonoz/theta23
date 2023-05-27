@@ -27,7 +27,7 @@ const SwitchAccounts = ({type}) => {
   return (
     <div>
         <br/>
-        <Button variant="outlined" onClick={handleOpen}>Switch Account Type</Button>
+        <Button variant="outlined" onClick={handleOpen}>Switch View</Button>
         <Modal
             open={modalOpen}
             onClose={handleOpen}
@@ -36,14 +36,14 @@ const SwitchAccounts = ({type}) => {
         >
         <Box sx={style}>
             <Typography id="modal-modal-title" variant="h6" component="h2">
-                Switch Account Type
+                Switch View
             </Typography>
-            <Typography>You are currently logged in as a <b>{type}</b>.</Typography>
+            <Typography>You are currently viewing as: <b>{type}</b></Typography>
             <br/>
             <Typography>Switch to:</Typography>
             <div>
                 <Button className='standard-btn' variant="contained" onClick={() => {navigate("/user/account");}}>Creator</Button>&nbsp;
-                <Button className='standard-btn' variant="contained">Sponsor</Button>&nbsp;
+                <Button className='standard-btn' variant="contained" onClick={() => {navigate("/sponsor/account");}}>Sponsor</Button>&nbsp;
                 <Button className='standard-btn' variant="contained" onClick={() => {navigate("/donor/account");}}>Donor</Button>
             </div>
         </Box>

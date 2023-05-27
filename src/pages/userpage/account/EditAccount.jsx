@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Box, Typography, Button, TextField } from '@mui/material';
 import { styled } from '@mui/material/styles';
+import TvIcon from '@mui/icons-material/Tv';
 
 import UserSidebar from '../../../components/navbar/UserSidebar';
 
@@ -14,6 +15,7 @@ function EditAccount ({account}) {
 
   const [open, setOpen] = useState(true);
   const [saved, setSaved] = useState(false);
+  const [error, setError] = useState(false);
 
   const [newEmail, setNewEmail] = useState("");
   const [newFirstName, setNewFirstName] = useState("");
@@ -35,8 +37,15 @@ function EditAccount ({account}) {
     // fix bug
   const userRef = doc(db, "users", "0x82BD5fD0F73bA74f335917991519b151f7eD6E02")
 
+  const handleError = () => {
+    setError(true)
+  }
+
   const submitForm = async () => {
-    try {
+    if (!newEmail || !newFirstName || !newLastName || !newUserName || !newProfilePic) {
+      handleError()
+    } else {
+      try {
         await setDoc(userRef, {
         email: newEmail,
         firstName: newFirstName,
@@ -47,11 +56,13 @@ function EditAccount ({account}) {
         console.log(err)
     }
     setSaved(true)
+    setError(false)
+    }
   }
 
   return (
     <div>
-      <Box sx={{ display: 'flex' }}>
+      <Box sx={{ display: 'flex'}}>
         <UserSidebar open={open} setOpen={setOpen} pageTitle="Edit Account" />
         <DrawerHeader />
         <div>
@@ -67,11 +78,12 @@ function EditAccount ({account}) {
             <br />
             <TextField size="small" sx={{width: 300, marginTop: 2}} onChange={(e) => setNewProfilePic(e.target.value)} required={true} label="Link to Profile Picture" variant="outlined" />
             <br />
-            <Button variant="outlined" sx={{marginTop: 2}}>Connect to Theta.tv</Button>
+            <Button variant="outlined" sx={{marginTop: 2}}>Connect to Theta.tv <TvIcon fontSize='small'/></Button>
             <br />
             <Button variant="contained" sx={{marginTop: 2, marginRight: 2}} onClick={() => {navigate("/user/account");}}>Go Back</Button>
             <Button variant="contained" sx={{marginTop: 2}} onClick={submitForm}>Save</Button>
             <Typography color="blue" sx={{marginTop: 2}}>{saved ? "Your account details were saved!" : ""}</Typography>
+            <Typography color="red" sx={{marginTop: 2}}>{error ? "You must fill out all fields" : ""}</Typography>
         </form>
         </div>
       </Box>

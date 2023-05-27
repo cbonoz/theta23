@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Box, CircularProgress, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
-import UserSidebar from '../../../components/navbar/UserSidebar';
-import { getTransactionsForAccountAddress, getTransactionList } from '../../../util/api';
-import { getRpcError, titleCase } from '../../../util';
+import UserSidebar from '../../components/navbar/UserSidebar';
+import { getTransactionsForAccountAddress, getTransactionList } from '../../util/api';
+import { getRpcError, titleCase } from '../../util';
 
-const Transactions = ({ account }) => {
+const SponsorTransactions = ({ account }) => {
   const drawerWidth = 240;
   const [transactionsData, setTransactionsData] = useState(null);
   const [transactionList, setTransactionList] = useState(null);
@@ -123,4 +123,4 @@ const Transactions = ({ account }) => {
   )
 }
 
-export default Transactions;
+export default SponsorTransactions;
