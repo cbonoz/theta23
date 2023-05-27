@@ -3,12 +3,13 @@ import { Box, CircularProgress, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
 import UserSidebar from '../../../components/navbar/UserSidebar';
-import { getTransactionsForAccountAddress } from '../../../util/api';
+import { getTransactionsForAccountAddress, getTransactionList } from '../../../util/api';
 import { getRpcError, titleCase } from '../../../util';
 
 const Transactions = ({ account }) => {
   const drawerWidth = 240;
-  const [data, setData] = useState(null);
+  const [transactionsData, setTransactionsData] = useState(null);
+  const [transactionList, setTransactionList] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -17,8 +18,8 @@ const Transactions = ({ account }) => {
     setError(null);
     try {
       const res = await getTransactionsForAccountAddress(account || '0x1c155c0eb7f2fb63ce149e7586d8595773b3a35a');
-      console.log('data', res.data)
-      setData(res.data);
+      console.log('transactionsData', res.data)
+      setTransactionsData(res.data);
     } catch (error) {
       const errorText = getRpcError(error)
       if (errorText.indexOf('404') !== -1) {
@@ -32,12 +33,35 @@ const Transactions = ({ account }) => {
     }
   }
 
+  async function fetchTransactionList() {
+    setLoading(true);
+    setError(null);
+    try {
+      const res = await getTransactionList();
+      console.log('data', res.data)
+      setTransactionList(res.data);
+    } catch (error) {
+      const errorText = getRpcError(error)
+      if (errorText.indexOf('404') !== -1) {
+        setError('No transactions found');
+      } else {
+        setError(errorText);
+      }
+      console.error('error getting transactions', error);
+    } finally {
+      setLoading(false);
+    }
+  }
 
   useEffect(() => {
     if (account) {
       fetchTransactionForAccount();
     }
   }, [account])
+
+  useEffect(() => {
+    fetchTransactionList();
+  }, [])
 
   const [open, setOpen] = useState(true);
 
@@ -69,7 +93,7 @@ const Transactions = ({ account }) => {
     justifyContent: 'flex-end',
   }));
 
-
+  console.log(transactionList)
   return (
     <div>
       <Box sx={{ display: 'flex' }}>
@@ -81,10 +105,16 @@ const Transactions = ({ account }) => {
           {!loading && <div>
             <h3>Transactions for {account}</h3>
             <ul>
-              {Object.keys(data || {}).map((key, index) => (
-                <li key={index}>{titleCase(key)}: {data[key]}</li>
+              {Object.keys(transactionsData || {}).map((key, index) => (
+                <li key={index}>{titleCase(key)}: {transactionsData[key]}</li>
               ))}
             </ul>
+            <h3>Transactions List</h3>
+            {/* <ul>
+              {Object.keys(transactionList || {}).map((key, index) => (
+                <li key={index}>{titleCase(key)}: {transactionList[key]}</li>
+              ))}
+            </ul> */}
             {error && <p className='error-text'>{error}</p>}
           </div>}
         </Main>

@@ -29,6 +29,7 @@ const App = () => {
     activateBrowserWallet();
   }, [])
 
+  
 
   return (
     <ThemeProvider theme={APP_THEME}>
