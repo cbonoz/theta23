@@ -138,7 +138,7 @@ const UserSidebar = ({ pageTitle, open, setOpen }) => {
                     <ListItemIcon>
                         <PaidIcon style={{ color: '#424242' }} />
                     </ListItemIcon>
-                    <ListItemText primary="Register pet" />
+                    <ListItemText primary="Register Pet" />
                     </ListItemButton>
                 </ListItem>
 
