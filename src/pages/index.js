@@ -2,6 +2,7 @@ export { default as Landing } from './landing/Landing';
 export { default as Contact } from './contact/Contact';
 export { default as Terms } from './administration/Terms';
 export { default as Privacy } from './administration/Privacy';
+export { default as Starter } from './starter/Starter';
 export { default as Account } from './userpage/account/Account';
 export { default as EditAccount } from './userpage/account/EditAccount';
 export { default as Transactions } from './userpage/transactions/Transactions';

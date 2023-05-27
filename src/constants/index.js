@@ -62,7 +62,7 @@ export const EXAMPLE_FORM =
 
 export const ACTIVE_NETWORK = ThetaTestnet;
 
-export const DEFAULT_HOME_PAGE = '/user/transactions'
+export const DEFAULT_HOME_PAGE = '/starter'
 
 // usedapp theta testnet config
 export const APP_NETWORK_CONFIG = {
