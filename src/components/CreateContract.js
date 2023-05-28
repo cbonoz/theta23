@@ -27,7 +27,7 @@ import { ACTIVE_NETWORK, APP_NAME, CREATE_STEPS, CREATORS, EXAMPLE_FORM } from "
 import { LoadingButton } from "@mui/lab";
 import Listify from "./Listify";
 
-const LAST_STEP = 3;
+const LAST_STEP = 4;
 
 function CreateContract({ isLoggedIn, signer, provider, blockExplorer }) {
   const { activateBrowserWallet, switchNetwork, chainId, account } = useEthers();
@@ -48,7 +48,7 @@ function CreateContract({ isLoggedIn, signer, provider, blockExplorer }) {
 
   const setDemoData = (e) => {
     e.preventDefault();
-    setInfo({ ...EXAMPLE_FORM });
+    setInfo({ ...EXAMPLE_FORM, shelterAddress: account });
   };
 
   const clearInfo = () => setInfo({});
@@ -333,14 +333,14 @@ function CreateContract({ isLoggedIn, signer, provider, blockExplorer }) {
         </div>)
       case 3: // upload
         return (<div>
-          <h2 className="sell-header">Preview creation</h2>
+          <h2 className="sell-header">Preview sponsorship</h2>
           <Listify object={info} />
         </div>
         );
       case 4: // done
         return (
           <div className="complete-section">
-            <h2 className="sell-header green">Complete!</h2>
+            <h2 className="sell-header green">{APP_NAME} NFT created!</h2>
             {
               result.transactionHash && <p>
               View transaction<br />
@@ -358,6 +358,7 @@ function CreateContract({ isLoggedIn, signer, provider, blockExplorer }) {
               </a>
             )}
           </div>
+
         );
     }
   };
