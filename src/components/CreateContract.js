@@ -227,6 +227,7 @@ function CreateContract({ isLoggedIn, signer, provider, blockExplorer }) {
               <Input
                 addonBefore={"Shelter Address"}
                 fullWidth
+                onChange={(e) => updateInfo({ shelterAddress: e.target.value })}
                 placeholder="Shelter Address"
                 value={info.shelterAddress}
               />
