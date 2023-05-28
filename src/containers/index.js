@@ -8,3 +8,8 @@ export { default as Summary } from './transactions/Summary';
 export { default as RegisteredPets } from './transactions/RegisteredPets';
 export { default as History } from './transactions/History';
 export { default as Analytics } from './transactions/Analytics';
+export { default as DonorTransactionTabs } from './donortransactions/DonorTransactionTabs';
+export { default as DonorSummary } from './donortransactions/DonorSummary';
+export { default as AdoptedPets } from './donortransactions/AdoptedPets';
+export { default as DonorHistory } from './donortransactions/DonorHistory';
+export { default as DonorAnalytics } from './donortransactions/DonorAnalytics';

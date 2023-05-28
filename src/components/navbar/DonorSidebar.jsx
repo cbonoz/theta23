@@ -10,11 +10,8 @@ import MuiAppBar from '@mui/material/AppBar';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import PaidIcon from '@mui/icons-material/Paid';
-import ListAltIcon from '@mui/icons-material/ListAlt';
-import Inventory2Icon from '@mui/icons-material/Inventory2';
+import StorefrontIcon from '@mui/icons-material/Storefront';
 import AssessmentIcon from '@mui/icons-material/Assessment';
-import PetsIcon from '@mui/icons-material/Pets';
 import PersonIcon from '@mui/icons-material/Person';
 import LogoutIcon from '@mui/icons-material/Logout';
 
@@ -127,18 +124,18 @@ const DonorSidebar = ({ pageTitle, open, setOpen }) => {
                 <ListItem disablePadding onClick={() => {navigate("/donor/marketplace");}}>
                     <ListItemButton>
                     <ListItemIcon>
-                        <AssessmentIcon style={{ color: '#424242' }} />
+                        <StorefrontIcon style={{ color: '#424242' }} />
                     </ListItemIcon>
                     <ListItemText primary="Marketplace" />
                     </ListItemButton>
                 </ListItem>
 
-                <ListItem disablePadding onClick={() => {navigate("/donor/adoptedpets");}}>
+                <ListItem disablePadding onClick={() => {navigate("/donor/transactions");}}>
                     <ListItemButton>
                     <ListItemIcon>
-                        <PetsIcon style={{ color: '#424242' }} />
+                      <AssessmentIcon style={{ color: '#424242' }} />
                     </ListItemIcon>
-                    <ListItemText primary="Adopted Pets" />
+                    <ListItemText primary="Transactions" />
                     </ListItemButton>
                 </ListItem>
 

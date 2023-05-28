@@ -4,6 +4,7 @@ import { styled } from '@mui/material/styles';
 
 import { useEtherBalance } from '@usedapp/core';
 import DonorSidebar from '../../components/navbar/DonorSidebar';
+import MarketplaceTabs from '../../containers/donortransactions/MarketplaceTabs';
 
 const Marketplace = ({account}) => {
   const drawerWidth = 240;
@@ -42,10 +43,10 @@ const Marketplace = ({account}) => {
   return (
     <div>
       <Box sx={{ display: 'flex' }}>
-        <DonorSidebar open={open} setOpen={setOpen} pageTitle="Account Overview" />
+        <DonorSidebar open={open} setOpen={setOpen} pageTitle="Marketplace" />
         <Main open={open}>
           <DrawerHeader />
-          <Typography>Market Place</Typography>
+          <MarketplaceTabs />
         </Main>
       </Box>
     </div>
