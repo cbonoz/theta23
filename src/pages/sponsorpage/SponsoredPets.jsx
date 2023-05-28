@@ -3,7 +3,8 @@ import { Box, Typography, Button } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
 import { useEtherBalance } from '@usedapp/core';
-import DonorSidebar from '../../components/navbar/DonorSidebar';
+import SponsorSidebar from '../../components/navbar/SponsorSidebar';
+import SponsoredPetsTabs from '../../containers/sponsortransactions/SponsoredPetsTabs';
 
 const SponsoredPets = ({account}) => {
   const drawerWidth = 240;
@@ -42,10 +43,10 @@ const SponsoredPets = ({account}) => {
   return (
     <div>
       <Box sx={{ display: 'flex' }}>
-        <DonorSidebar open={open} setOpen={setOpen} pageTitle="Account Overview" />
+        <SponsorSidebar open={open} setOpen={setOpen} pageTitle="Sponsoring Pets" />
         <Main open={open}>
           <DrawerHeader />
-          <Typography>Adopted Pets</Typography>
+          <SponsoredPetsTabs />
         </Main>
       </Box>
     </div>

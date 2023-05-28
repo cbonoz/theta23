@@ -27,9 +27,9 @@ import { ACTIVE_NETWORK, APP_NAME, CREATE_STEPS, CREATORS, EXAMPLE_FORM } from "
 import { LoadingButton } from "@mui/lab";
 import Listify from "./Listify";
 import { db } from "../config/firebase";
-import { doc, setDoc } from 'firebase/firestore';
+import { collection, doc, setDoc } from 'firebase/firestore';
 
-const petsRef = doc(db, "pets")
+const petsRef = doc(collection(db, "pets"))
 const LAST_STEP = 4;
 
 function CreateContract({ isLoggedIn, signer, provider, blockExplorer }) {

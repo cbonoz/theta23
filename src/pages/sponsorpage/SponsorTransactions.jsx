@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Box, CircularProgress, Typography } from '@mui/material';
+import { Box, CircularProgress, Typography, Card, Grid, Paper, Grow } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
-import UserSidebar from '../../components/navbar/UserSidebar';
+import SponsorSidebar from '../../components/navbar/SponsorSidebar';
+import {DonorSummary, DonorTransactionTabs} from '../../containers';
 import { getTransactionsForAccountAddress, getTransactionList } from '../../util/api';
 import { getRpcError, titleCase } from '../../util';
 
@@ -93,28 +94,57 @@ const SponsorTransactions = ({ account }) => {
     justifyContent: 'flex-end',
   }));
 
-  console.log(transactionList)
+  const Item = styled(Paper)(() => ({
+    backgroundColor: 'blue',
+    padding: 8,
+    textAlign: 'center',
+    color: 'black',
+  }));
   return (
     <div>
       <Box sx={{ display: 'flex' }}>
-        <UserSidebar open={open} setOpen={setOpen} pageTitle="Dashboard" />
+        <SponsorSidebar open={open} setOpen={setOpen} pageTitle="Transactions" />
         <Main open={open}>
           <DrawerHeader />
           {/* <img src={UserPanel} alt="userpanel" width={1160} height={631} /> */}
           {loading && <CircularProgress />}
           {!loading && <div>
-            <Typography align="center" variant="h2" sx={{mt: 3, mb: 1}} color="primary">Your Transactions📈</Typography>
-            <ul>
-              {Object.keys(transactionsData || {}).map((key, index) => (
-                <li key={index}>{titleCase(key)}: {transactionsData[key]}</li>
-              ))}
-            </ul>
-            <h3>Transactions List</h3>
-            {/* <ul>
-              {Object.keys(transactionList || {}).map((key, index) => (
-                <li key={index}>{titleCase(key)}: {transactionList[key]}</li>
-              ))}
-            </ul> */}
+            <Typography align="center" variant="h2" sx={{mt: 2, mb: 1}} color="primary">Your Transactions</Typography>
+            <Card sx={{marginBottom: 1}}>
+              <DonorSummary />
+            </Card>
+            <Grow in>
+              <Grid container justify="center" alignItems='flex-start' spacing={1}>
+                <Grid item xs={12} sm={6} md={8}>
+                  <Paper elevation={2}>
+                      <div>
+                          <Card>
+                            <DonorTransactionTabs />
+                          </Card>
+                      </div>
+                  </Paper>
+                </Grid>
+                <Grid item xs={12} sm={6} md={4}>
+                  <Paper elevation={2}>
+                      <div>
+                          <Card>
+                            <Typography align="center" variant="h6" sx={{mt: 1, mb: 1}} color="primary">Transaction History</Typography>
+                            <ul>
+                              {Object.keys(transactionsData || {}).map((key, index) => (
+                                <li key={index}>{titleCase(key)}: {transactionsData[key]}</li>
+                              ))}
+                            </ul>
+                            {/* <ul>
+                              {Object.keys(transactionList || {}).map((key, index) => (
+                                <li key={index}>{titleCase(key)}: {transactionList[key]}</li>
+                              ))}
+                            </ul> */}
+                          </Card>
+                      </div>
+                  </Paper>
+                </Grid>
+              </Grid>
+            </Grow>
             {error && <p className='error-text'>{error}</p>}
           </div>}
         </Main>

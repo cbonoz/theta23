@@ -6,7 +6,7 @@ import { styled } from '@mui/material/styles';
 
 import SwitchAccounts from '../../components/SwitchAccounts';
 import SetUpAccount from '../../components/SetUpAccount';
-import UserSidebar from '../../components/navbar/UserSidebar';
+import SponsorSidebar from '../../components/navbar/SponsorSidebar';
 import { ACTIVE_NETWORK } from '../../constants';
 import RenderBalance from '../../components/RenderBalance';
 import { useEtherBalance } from '@usedapp/core';
@@ -69,7 +69,7 @@ function SponsorAccount ({account}) {
   return (
     <div>
       <Box sx={{ display: 'flex' }}>
-        <UserSidebar open={open} setOpen={setOpen} pageTitle="Account Overview" />
+        <SponsorSidebar open={open} setOpen={setOpen} pageTitle="Account Overview" />
         <Main open={open}>
           <DrawerHeader />
           {userData ? (<div align="center">
