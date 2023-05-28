@@ -1,7 +1,7 @@
 import {React, useState} from 'react'
 import { Box, Tab } from '@mui/material';
 import { TabPanel, TabList, TabContext } from '@mui/lab';
-import { Analytics, RegisteredPets } from '..';
+import AnimalCards from './AnimalCards';
 
 const MarketplaceTabs = () => {
   const [tabValue, setTabValue] = useState("0")
@@ -26,22 +26,22 @@ const MarketplaceTabs = () => {
               </TabList>
             </Box>
             <TabPanel value="0">
-              All
+              <AnimalCards type={"all"} />
             </TabPanel>
             <TabPanel value="1">
-              Dogs
+              <AnimalCards type={"dog"} />
             </TabPanel>
             <TabPanel value="2">
-              Cats
+              <AnimalCards type={"cat"} />
             </TabPanel>
             <TabPanel value="3">
-              Birds
+              <AnimalCards type={"bird"} />
             </TabPanel>
             <TabPanel value="4">
-              Garden Animals
+              <AnimalCards type={"gardenAnimal"} />
             </TabPanel>
             <TabPanel value="5">
-              Livestock
+              <AnimalCards type={"livestock"} />
             </TabPanel>
           </TabContext>
         </Box>
