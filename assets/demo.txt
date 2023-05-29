@@ -11,23 +11,23 @@ Existing solutions fall short by either:
 2. Not having a curated collection of content creators. By using Theta we can tap into a community of creators looking to further monetize their content and do good.
 3. Lack of transparency or community around helping adoption. Going to a shelter and helping a pet get adopted is great, but with a web platform this can scale to thousands of pets at once.
 
-Adoptify tackles this issue by leveraging NFTs and the blockchain to raise awareness and generate direct funding for shelter animals."
+Adoptify tackles this issue by leveraging NFTs and the blockchain to find homes for shelter animals."
 
 [Scene transitions to the NFT creation page.]
 
-Narrator: "Let's walk through the process of minting an NFT from a known creator, where the funds go directly to the creator themselves."
+Narrator: "When a visitor to an adoption shelter finds a pet they would like to help but are unable to adopt, our appliccation provides an option to instead sponsor the animal and find it a home. The donor starts by uploading details about the animal along with a wallet address for the shelter, which will later verify when someone adopts the pet."
 
-[The user selects an NFT artwork created by a known artist.]
+[The user selects a content creator.]
 
-Narrator: "After choosing the artwork, you can proceed to mint the NFT. This action triggers a smart contract on the blockchain, ensuring transparency and security throughout the process."
+Narrator: "A donor can then fund a content creator or influencer from the Theta TV platform to promote the pet with the goal of finding it a home. Once the donor has made a selection and has funds available to transfer, they can proceed to mint the NFT. This action triggers a smart contract on the Theta blockchain, ensuring transparency and security throughout the process."
 
 [The progress bar completes, and the NFT is successfully minted.]
 
-Narrator: "Congratulations! You've just minted a unique NFT that represents your support for animal welfare. It's now part of the Adoptify ecosystem, contributing to our collective mission."
+Narrator: "Congratulations! You've just minted a unique NFT that represents your support for your favorite animal. The streamer you selected automacically receives the funds and can start working to get it adopted as quickly as possible, because once the adoption shelter confirms the pet has a home, they eligible to promote another."
 
-[Scene transitions to the NFT detail page.]
+[Scene transitions to the content creator.]
 
-Narrator: "On the NFT detail page, you'll find all the relevant information about your NFT, including its unique identifier, the creator's details, and the portion of funds allocated to shelters."
+Narrator: "For streamer, Adoptify offers an immediate source of revenue as well as a good cause. By exploring a streamers blockchain transaction they can gain insight into how efficiently they are able to earn revenue and help shelter pets. They can also view and share with others, details about all of the animals they have helped here"
 
 [The screen shows the NFT detail page with all the information.]
 
