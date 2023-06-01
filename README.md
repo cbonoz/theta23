@@ -13,7 +13,7 @@ Built for the Theta devpost 2023 hackathon.
 Live Demo: https://adoptify.surge.sh (Note must be on Theta testnet for demo).
 
 
-Video:
+Video: https://www.youtube.com/watch?v=fGsu-GPbjJA
 
 ### Motivation
 Our motivation for building Adoptify was to create a platform that can make a real difference in the lives of shelter animals. We wanted to use the power of NFTs and blockchain technology to raise awareness and drive adoption rates of pets in shelters. Our goal was to create a community of like-minded individuals who are passionate about animal welfare and can work together to make a positive impact.
