@@ -3,7 +3,7 @@ import { Box, CircularProgress, Typography, Card, Grid, Paper, Grow } from '@mui
 import { styled } from '@mui/material/styles';
 
 import UserSidebar from '../../../components/navbar/UserSidebar';
-import {Summary, TransactionTabs} from '../../../containers';
+import {Summary, TransactionTabs, History} from '../../../containers';
 import { getTransactionsForAccountAddress, getTransactionList } from '../../../util/api';
 import { getRpcError, titleCase } from '../../../util';
 
@@ -115,7 +115,7 @@ const Transactions = ({ account }) => {
             </Card>
             <Grow in>
               <Grid container justify="center" alignItems='flex-start' spacing={1}>
-                <Grid item xs={12} sm={6} md={8}>
+                <Grid item xs={12} sm={6} md={7}>
                   <Paper elevation={2}>
                       <div>
                           <Card>
@@ -124,16 +124,17 @@ const Transactions = ({ account }) => {
                       </div>
                   </Paper>
                 </Grid>
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={5}>
                   <Paper elevation={2}>
                       <div>
                           <Card>
                             <Typography align="center" variant="h6" sx={{mt: 1, mb: 1}} color="primary">Transaction History</Typography>
-                            <ul>
+                            <History />
+                            {/* <ul>
                               {Object.keys(transactionsData || {}).map((key, index) => (
                                 <li key={index}>{titleCase(key)}: {transactionsData[key]}</li>
                               ))}
-                            </ul>
+                            </ul> */}
                             {/* <ul>
                               {Object.keys(transactionList || {}).map((key, index) => (
                                 <li key={index}>{titleCase(key)}: {transactionList[key]}</li>
