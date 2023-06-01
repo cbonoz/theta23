@@ -91,8 +91,8 @@ function Account ({account}) {
               {account && <Typography sx={{mb: 3}}>Address: {account}</Typography>}
               {/* Render balance */}
             </Card>
-            <Typography sx={{marginTop: 2, marginBottom: -2}}>You're currently viewing this site as: Creator 👩‍🎨</Typography>
-            <SwitchAccounts type={"Creator"}/>
+            <Typography sx={{marginTop: 2, marginBottom: -2}}>You're currently viewing this site as: Donor 👩‍🎨</Typography>
+            <SwitchAccounts type={"Donor"}/>
           </div>) : <SetUpAccount/> }
         </Main>
       </Box>

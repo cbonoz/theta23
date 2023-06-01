@@ -42,9 +42,8 @@ const SwitchAccounts = ({type}) => {
             <br/>
             <Typography>Switch to:</Typography>
             <div>
-                <Button className='standard-btn' variant="contained" onClick={() => {navigate("/user/account");}}>Creator</Button>&nbsp;
-                <Button className='standard-btn' variant="contained" onClick={() => {navigate("/sponsor/account");}}>Sponsor</Button>&nbsp;
-                <Button className='standard-btn' variant="contained" onClick={() => {navigate("/donor/account");}}>Donor</Button>
+                <Button className='standard-btn' variant="contained" onClick={() => {navigate("/user/account");}}>Donor</Button>&nbsp;
+                <Button className='standard-btn' variant="contained" onClick={() => {navigate("/sponsor/account");}}>Creator</Button>&nbsp;
             </div>
         </Box>
         </Modal>

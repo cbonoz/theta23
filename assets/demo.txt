@@ -1,42 +1,48 @@
+Let's walk through the Adoptify website.
 
-[Open page of adoption shelter]
+First, make sure your wallet is connected with MetaMask.
 
+Then, click on “connect wallet”.
 
-Narrator: "Welcome to the Adoptify hackathon demo. Today, we'll show you how our platform utilizes NFTs and blockchain technology to address the limitations of existing solutions and create a positive impact for shelter animals. Let's dive in!"
+When a visitor to an adoption shelter finds a pet they’d like to help but are unable to adopt, our application provides an option to instead sponsor the animal and find it a home. 
 
-Narrator: "One of the main challenges with existing solutions is the lack of awareness and funding for shelters. 
+You’ll be given the option to choose your view. The donor view is for animal shelters and the creator view is for the ThetaTV streamers. 
 
-Existing solutions fall short by either:
-1. Not giving direct funding to creators.
-2. Not having a curated collection of content creators. By using Theta we can tap into a community of creators looking to further monetize their content and do good.
-3. Lack of transparency or community around helping adoption. Going to a shelter and helping a pet get adopted is great, but with a web platform this can scale to thousands of pets at once.
+Let’s walk through the donor view first.
 
-Adoptify tackles this issue by leveraging NFTs and the blockchain to find homes for shelter animals."
+You’ll be directed your account page, where you can check your theta wallet balance as well as update your account profile.
 
-[Scene transitions to the NFT creation page.]
+To register an animal, click on register pet.
 
-Narrator: "When a visitor to an adoption shelter finds a pet they would like to help but are unable to adopt, our appliccation provides an option to instead sponsor the animal and find it a home. The donor starts by uploading details about the animal along with a wallet address for the shelter, which will later verify when someone adopts the pet."
+[Go to Register Pet]
 
-[The user selects a content creator.]
+The donor starts by uploading details of the animal along with a wallet address for the shelter, which will later verify when someone adopts the pet.
 
-Narrator: "A donor can then fund a content creator or influencer from the Theta TV platform to promote the pet with the goal of finding it a home. Once the donor has made a selection and has funds available to transfer, they can proceed to mint the NFT. This action triggers a smart contract on the Theta blockchain, ensuring transparency and security throughout the process."
+A donor can then fund a content creator or influencer from the Theta TV platform to promote the pet. Once the donor has made a selection and has funds available for transfer, they can proceed to mint the NFT. This action triggers a smart contract on the Theta blockchain, ensuring transparency and security throughout the process.
 
 [The progress bar completes, and the NFT is successfully minted.]
 
-Narrator: "Congratulations! You've just minted a unique NFT that represents your support for your favorite animal. The streamer you selected automacically receives the funds and can start working to get it adopted as quickly as possible, because once the adoption shelter confirms the pet has a home, they eligible to promote another."
+Congratulations! You've just minted a unique NFT that represents your support for your favorite animal. The streamer you selected automatically receives the funds and can start working to get it adopted as quickly as possible.
+
+You can also check out your transaction data by clicking on the transactions tab.
+
+[Go to transactions]
+
+You can look at your transaction history as well as your registered pets.
+
+Next, let’s walkthrough the creator view for the streamers.
+
+You can switch the view to streamers portal by clicking on account and clicking on the button switch view.  Click on creator.
 
 [Scene transitions to the content creator.]
 
-Narrator: "For streamer, Adoptify offers an immediate source of revenue as well as a good cause. By exploring a streamers blockchain transaction they can gain insight into how efficiently they are able to earn revenue and help shelter pets. They can also view and share with others, details about all of the animals they have helped here"
+For Theta TV streamers, Adoptify offers an immediate source of revenue as well as a good cause. 
 
-[The screen shows the NFT detail page with all the information.]
+You can click on adopted pets to view all the pets you’ve adopted.
 
-Narrator: "But Adoptify goes beyond the creation and sale of NFTs. We foster a vibrant community of individuals passionate about animal welfare. Through the platform, you can connect with like-minded members, participate in events and campaigns, and contribute directly to shelter initiatives."
+You can click on the transaction page to view the transactions for your adopted pets. By exploring a streamer’s blockchain transaction, streamers can gain insight on how to efficiently earn revenue and help shelter pets. They can also view and share the details of all the animals they have helped here.
 
-[Scene transitions to the Adoptify community page.]
+But Adoptify goes beyond the creation and sale of NFTs. We foster a vibrant community of individuals passionate about animal welfare. Through the platform, you can connect with like-minded members, participate in events and campaigns, and contribute directly to shelter initiatives.
 
-Narrator: "Our community section allows you to engage with fellow animal lovers, share adoption stories, and learn about the impact your contributions are making."
-
-[The screen shows the community page with various discussions and activities.]
 
 Narrator: "In conclusion, Adoptify bridges the gap between art, technology, and animal welfare. By minting NFTs from known creators and supporting them while allocating significant funds to shelters, we create a sustainable ecosystem that drives adoption rates and makes a real difference in the lives of shelter animals."

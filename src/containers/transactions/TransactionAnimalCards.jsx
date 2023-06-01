@@ -31,7 +31,7 @@ function TransactionAnimalCards () {
         <Grow in>
             <Grid container justify="center" alignItems='flex-start' spacing={1}>
             {animalList.map((animal) => {
-                if (animal.creatorName === "GFUEL") return(
+                if (animal.shelterName === "Pawsome") return(
                 <div>
                     <Grid item minWidth={210} sx={{marginRight: 2, marginBottom: 2}}>
                         <Paper elevation={2}>
