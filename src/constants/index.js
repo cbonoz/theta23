@@ -55,8 +55,8 @@ export const CREATORS = [
 export const EXAMPLE_FORM =
 {
     shelterAddress: '0xFc62E94af9aBd25a1D7abfe00F7034Cf154BbBD9',
-    petName: 'Doda (Golden retriever)',
-    petUrl: 'https://www.thesprucepets.com/thmb/baW88YsVO_JqNBNJPhCFBHbNUMM=/1500x0/filters:no_upscale():strip_icc()/dog-breed-profile-golden-retriever-1117969-hero-da398f6462704058ace0ef5ae007866d.jpeg',
+    petName: 'Doda',
+    petUrl: 'https://cloudfront-us-east-1.images.arcpublishing.com/opb/AOMCK6FCBVBLREGETIYHRYYGBY.jpg',
     ...CREATORS[0] // Default to first creator.
 }
 

@@ -252,7 +252,7 @@ function CreateContract({ isLoggedIn, signer, provider, blockExplorer }) {
             {/* <p><br/>{UPLOAD_INFO}</p> */}
             {info.petUrl && (<div>
                 <br/>
-                <h3>Preview</h3>
+                <h3>Sponsored pet</h3>
                 <br/>
                 <img className="pet-preview" src={info.petUrl} alt="Pet Image" />
               </div>

@@ -12,7 +12,6 @@ Built for the Theta devpost 2023 hackathon.
 
 Live Demo: https://adoptify.surge.sh (Note must be on Theta testnet for demo).
 
-
 Video: https://www.youtube.com/watch?v=fGsu-GPbjJA
 
 ### Motivation
@@ -45,6 +44,32 @@ We are proud of creating a platform that can make a real difference in the lives
 
 ### What we learned
 Throughout the development process, we learned a lot about the power of blockchain technology and how it can be used to create innovative solutions. We also learned about the challenges of building a decentralized platform and how to address them. We gained valuable experience in smart contract development, frontend development, and web3 integration.
+
+### Example minted NFT:
+https://testnet-explorer.thetatoken.org/tx/0x32e839645ecc55205e32a8a449c57d887cfe6f7a8fed998c0debe25001940c77
+
+
+### Screenshots
+
+### Main home page
+<img src="img/home.png" width=700 />
+
+### Creating a new pet listing
+<img src="img/create.png" width=700 />
+
+### Confirming mint
+<img src="img/confirm.png" width=700 />
+
+### Mint complete
+<img src="img/done.png" width=700 />
+
+### Minted NFT
+
+<img src="img/nft.png" width=700 />
+
+### AdoptNFT contract
+<img src="img/contract.png" width=700 />
+
 
 <!-- ## Demo flow written example
 See `./assets/demo.txt` -->
